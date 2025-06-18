@@ -23,103 +23,86 @@
 </head>
 
 <body>
-  <div class="min-h-screen bg-gray-900 text-white">
+  <div class="page-wrapper">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                ByoDrive
-              </h1>
-            </div>
-          </div>
-
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-8">
-              <button onclick="scrollToSection('home')"
-                class="nav-link hover:text-purple-400 transition-colors duration-200">
-                Home
-              </button>
-              <button onclick="scrollToSection('services')"
-                class="nav-link hover:text-purple-400 transition-colors duration-200">
-                Services
-              </button>
-              <button onclick="scrollToSection('fleet')"
-                class="nav-link hover:text-purple-400 transition-colors duration-200">
-                Fleet
-              </button>
-              <button onclick="scrollToSection('contact')"
-                class="nav-link hover:text-purple-400 transition-colors duration-200">
-                Contact
-              </button>
-            </div>
-          </div>
-
-          <div class="md:hidden">
-            <button onclick="toggleMenu()"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-              <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                </path>
-              </svg>
-              <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <h1 class="navbar-logo">
+            ByoDrive
+          </h1>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <button onclick="scrollToSection('home')" class="nav-link">
+              Home
+            </button>
+            <button onclick="scrollToSection('services')" class="nav-link">
+              Services
+            </button>
+            <button onclick="scrollToSection('fleet')" class="nav-link">
+              Fleet
+            </button>
+            <button onclick="scrollToSection('contact')" class="nav-link">
+              Contact
             </button>
           </div>
         </div>
+        
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMenu()" class="mobile-menu-toggle">
+          <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+            </path>
+          </svg>
+          <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="md:hidden bg-gray-900/95 backdrop-blur-sm hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <button onclick="scrollToSection('home')"
-            class="block px-3 py-2 text-base font-medium hover:text-purple-400 transition-colors duration-200 w-full text-left">
-            Home
-          </button>
-          <button onclick="scrollToSection('services')"
-            class="block px-3 py-2 text-base font-medium hover:text-purple-400 transition-colors duration-200 w-full text-left">
-            Services
-          </button>
-          <button onclick="scrollToSection('fleet')"
-            class="block px-3 py-2 text-base font-medium hover:text-purple-400 transition-colors duration-200 w-full text-left">
-            Fleet
-          </button>
-          <button onclick="scrollToSection('contact')"
-            class="block px-3 py-2 text-base font-medium hover:text-purple-400 transition-colors duration-200 w-full text-left">
-            Contact
-          </button>
-        </div>
+      <div id="mobile-menu" class="mobile-menu">
+        <button onclick="scrollToSection('home')" class="mobile-menu-item">
+          Home
+        </button>
+        <button onclick="scrollToSection('services')" class="mobile-menu-item">
+          Services
+        </button>
+        <button onclick="scrollToSection('fleet')" class="mobile-menu-item">
+          Fleet
+        </button>
+        <button onclick="scrollToSection('contact')" class="mobile-menu-item">
+          Contact
+        </button>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
+    <section id="home" class="hero">
+      <div class="hero-background">
         <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop" alt="Luxury car"
-          class="w-full h-full object-cover opacity-30" />
-        <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-purple-900/60"></div>
+          class="hero-image" />
+        <div class="hero-overlay"></div>
       </div>
 
-      <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+      <div class="hero-content">
+        <h1 class="hero-title">
           Premium Car Rental
-          <span class="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <span class="hero-title-highlight">
             Experience
           </span>
         </h1>
-        <p class="text-lg sm:text-xl md:text-2xl mb-8 text-gray-300 animate-fade-in animation-delay-200">
+        <p class="hero-subtitle">
           Discover luxury, comfort, and reliability with our premium fleet of vehicles
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-400">
-          <button onclick="scrollToSection('fleet')"
-            class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+        <div class="hero-buttons">
+          <button onclick="scrollToSection('fleet')" class="btn btn-primary">
             Browse Fleet
           </button>
-          <button onclick="scrollToSection('contact')"
-            class="border-2 border-purple-500 hover:bg-purple-500 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+          <button onclick="scrollToSection('contact')" class="btn btn-secondary">
             Book Now
           </button>
         </div>
@@ -127,143 +110,132 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Why Choose ByoDrive?</h2>
-          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+    <section id="services" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Why Choose ByoDrive?</h2>
+          <p class="section-subtitle">
             We provide exceptional service with premium vehicles and unmatched convenience
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="bg-gray-900 p-6 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-              <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
                 </path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">Premium Fleet</h3>
-            <p class="text-gray-400">Luxury vehicles maintained to the highest standards</p>
+            <h3 class="service-title">Premium Fleet</h3>
+            <p class="service-description">Luxury vehicles maintained to the highest standards</p>
           </div>
 
-          <div
-            class="bg-gray-900 p-6 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-              <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                 </path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">Fully Insured</h3>
-            <p class="text-gray-400">Comprehensive coverage for your peace of mind</p>
+            <h3 class="service-title">Fully Insured</h3>
+            <p class="service-description">Comprehensive coverage for your peace of mind</p>
           </div>
 
-          <div
-            class="bg-gray-900 p-6 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-              <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
-            <p class="text-gray-400">Round-the-clock assistance whenever you need it</p>
+            <h3 class="service-title">24/7 Support</h3>
+            <p class="service-description">Round-the-clock assistance whenever you need it</p>
           </div>
 
-          <div
-            class="bg-gray-900 p-6 rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105">
-            <div
-              class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-              <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
                 </path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">Best Rates</h3>
-            <p class="text-gray-400">Competitive pricing with no hidden fees</p>
+            <h3 class="service-title">Best Rates</h3>
+            <p class="service-description">Competitive pricing with no hidden fees</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Fleet Section -->
-    <section id="fleet" class="py-20 bg-gray-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Our Premium Fleet</h2>
-          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+    <section id="fleet" class="section section-darker">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Premium Fleet</h2>
+          <p class="section-subtitle">
             Choose from our carefully selected collection of luxury vehicles
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+        <div class="fleet-grid">
+          <div class="fleet-card">
             <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop"
-              alt="Luxury Sedan" class="w-full h-48 object-cover" />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Luxury Sedan</h3>
-              <p class="text-gray-400 mb-4">Perfect for business trips and city driving</p>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <svg class="h-4 w-4 text-yellow-400 fill-current" fill="currentColor" viewBox="0 0 20 20">
+              alt="Luxury Sedan" class="fleet-image" />
+            <div class="fleet-content">
+              <h3 class="fleet-title">Luxury Sedan</h3>
+              <p class="fleet-description">Perfect for business trips and city driving</p>
+              <div class="fleet-footer">
+                <div class="fleet-rating">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
                     <path
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                     </path>
                   </svg>
-                  <span class="ml-1 text-sm text-gray-400">4.9 (127 reviews)</span>
+                  <span class="fleet-rating-text">4.9 (127 reviews)</span>
                 </div>
-                <span class="text-lg font-bold text-purple-400">$89/day</span>
+                <span class="fleet-price">$89/day</span>
               </div>
             </div>
           </div>
 
-          <div
-            class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+          <div class="fleet-card">
             <img src="https://images.unsplash.com/photo-1494976688153-018c27012e15?w=600&h=400&fit=crop"
-              alt="Sports Car" class="w-full h-48 object-cover" />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Sports Car</h3>
-              <p class="text-gray-400 mb-4">Unleash your passion for driving</p>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <svg class="h-4 w-4 text-yellow-400 fill-current" fill="currentColor" viewBox="0 0 20 20">
+              alt="Sports Car" class="fleet-image" />
+            <div class="fleet-content">
+              <h3 class="fleet-title">Sports Car</h3>
+              <p class="fleet-description">Unleash your passion for driving</p>
+              <div class="fleet-footer">
+                <div class="fleet-rating">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
                     <path
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                     </path>
                   </svg>
-                  <span class="ml-1 text-sm text-gray-400">4.8 (89 reviews)</span>
+                  <span class="fleet-rating-text">4.8 (89 reviews)</span>
                 </div>
-                <span class="text-lg font-bold text-purple-400">$149/day</span>
+                <span class="fleet-price">$149/day</span>
               </div>
             </div>
           </div>
 
-          <div
-            class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
-            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop" alt="SUV"
-              class="w-full h-48 object-cover" />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Luxury SUV</h3>
-              <p class="text-gray-400 mb-4">Spacious comfort for family adventures</p>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <svg class="h-4 w-4 text-yellow-400 fill-current" fill="currentColor" viewBox="0 0 20 20">
+          <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop"
+              alt="SUV" class="fleet-image" />
+            <div class="fleet-content">
+              <h3 class="fleet-title">Luxury SUV</h3>
+              <p class="fleet-description">Spacious comfort for family adventures</p>
+              <div class="fleet-footer">
+                <div class="fleet-rating">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
                     <path
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                     </path>
                   </svg>
-                  <span class="ml-1 text-sm text-gray-400">4.9 (156 reviews)</span>
+                  <span class="fleet-rating-text">4.9 (156 reviews)</span>
                 </div>
-                <span class="text-lg font-bold text-purple-400">$119/day</span>
+                <span class="fleet-price">$119/day</span>
               </div>
             </div>
           </div>
@@ -272,84 +244,65 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
-          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+    <section id="contact" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">
             Ready to book your premium vehicle? Contact us today
           </p>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <svg class="h-5 w-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <span>123 Premium Drive, Luxury City, LC 12345</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="h-5 w-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                  </path>
-                </svg>
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div class="flex items-center">
-                <svg class="h-5 w-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                  </path>
-                </svg>
-                <span>info@byodrive.com</span>
-              </div>
+        
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 class="contact-title">Contact Information</h3>
+            <div class="contact-item">
+              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span>123 Premium Drive, Luxury City, LC 12345</span>
             </div>
-
-            <div class="mt-8">
-              <h4 class="text-lg font-semibold mb-4">Business Hours</h4>
-              <div class="space-y-2 text-gray-400">
-                <div>Monday - Friday: 8:00 AM - 8:00 PM</div>
-                <div>Saturday: 9:00 AM - 6:00 PM</div>
-                <div>Sunday: 10:00 AM - 4:00 PM</div>
-              </div>
+            <div class="contact-item">
+              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <span>info@byodrive.com</span>
+            </div>
+            
+            <div class="business-hours">
+              <h4 class="business-hours-title">Business Hours</h4>
+              <div class="business-hours-item">Monday - Friday: 8:00 AM - 8:00 PM</div>
+              <div class="business-hours-item">Saturday: 9:00 AM - 6:00 PM</div>
+              <div class="business-hours-item">Sunday: 10:00 AM - 4:00 PM</div>
             </div>
           </div>
-
+          
           <div>
-            <form class="space-y-6" onsubmit="handleFormSubmit(event)">
-              <div>
-                <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                <input type="text" id="name" name="name"
-                  class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                  placeholder="Your full name" required />
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required />
               </div>
-              <div>
-                <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                <input type="email" id="email" name="email"
-                  class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                  placeholder="your.email@example.com" required />
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required />
               </div>
-              <div>
-                <label for="phone" class="block text-sm font-medium mb-2">Phone</label>
-                <input type="tel" id="phone" name="phone"
-                  class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                  placeholder="+1 (555) 123-4567" />
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567" />
               </div>
-              <div>
-                <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                <textarea id="message" name="message" rows="4"
-                  class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
-                  placeholder="Tell us about your rental needs..." required></textarea>
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your rental needs..." required></textarea>
               </div>
-              <button type="submit"
-                class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              <button type="submit" class="btn btn-primary w-full">
                 Send Message
               </button>
             </form>
@@ -359,21 +312,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <h3
-            class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-4">
-            ByoDrive
-          </h3>
-          <p class="text-gray-400 mb-6">
-            Premium car rental service delivering luxury, comfort, and reliability
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2024 ByoDrive. All rights reserved.
           </p>
-          <div class="border-t border-gray-700 pt-6">
-            <p class="text-gray-500 text-sm">
-              © 2024 ByoDrive. All rights reserved.
-            </p>
-          </div>
         </div>
       </div>
     </footer>

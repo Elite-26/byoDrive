@@ -44,11 +44,9 @@ function handleScroll() {
 // Update navbar appearance based on scroll position
 function updateNavbar() {
     if (scrolled) {
-        navbar.classList.add('bg-gray-900/95', 'backdrop-blur-sm', 'shadow-lg');
-        navbar.classList.remove('bg-transparent');
+        navbar.classList.add('scrolled');
     } else {
-        navbar.classList.remove('bg-gray-900/95', 'backdrop-blur-sm', 'shadow-lg');
-        navbar.classList.add('bg-transparent');
+        navbar.classList.remove('scrolled');
     }
 }
 
@@ -57,11 +55,11 @@ function toggleMenu() {
     isMenuOpen = !isMenuOpen;
     
     if (isMenuOpen) {
-        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('active');
         menuIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
     } else {
-        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('active');
         menuIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
     }
@@ -161,12 +159,12 @@ function isValidEmail(email) {
 // Show message to user
 function showMessage(message, type) {
     // Remove existing messages
-    const existingMessages = document.querySelectorAll('.success-message, .error-message');
+    const existingMessages = document.querySelectorAll('.message');
     existingMessages.forEach(msg => msg.remove());
     
     // Create new message element
     const messageElement = document.createElement('div');
-    messageElement.className = type === 'success' ? 'success-message' : 'error-message';
+    messageElement.className = `message message-${type}`;
     messageElement.innerHTML = message;
     
     // Insert message after form
