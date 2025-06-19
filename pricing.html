@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - ByoDrive</title>
+    <meta name="description" content="Choose your premium car rental plan" />
+    <meta name="author" content="ByoDrive" />
+
+    <meta property="og:title" content="Pricing - ByoDrive" />
+    <meta property="og:description" content="Choose your premium car rental plan" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img">
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <a href="index.html" class="nav-link">
+              Home
+            </a>
+            <a href="pricing.html" class="nav-link active">
+              Pricing
+            </a>
+            <a href="contact.html" class="nav-link">
+              Contact
+            </a>
+          </div>
+        </div>
+        
+        <!-- Login Button -->
+        <div class="navbar-auth">
+          <a href="login.html" class="btn btn-login">
+            Login
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMenu()" class="mobile-menu-toggle">
+          <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+            </path>
+          </svg>
+          <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html" class="mobile-menu-item">
+          Home
+        </a>
+        <a href="pricing.html" class="mobile-menu-item active">
+          Pricing
+        </a>
+        <a href="contact.html" class="mobile-menu-item">
+          Contact
+        </a>
+      </div>
+    </nav>
+
+    <!-- Pricing Section -->
+    <section class="section section-dark" style="padding-top: 8rem;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Choose Your Plan</h2>
+          <p class="section-subtitle">
+            Flexible pricing options to suit your needs and budget
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="pricing-title">Basic</h3>
+              <div class="pricing-price">
+                <span class="price-amount">$29</span>
+                <span class="price-period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Up to 3 vehicles</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Basic support</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Standard insurance</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-full">Get Started</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3 class="pricing-title">Premium</h3>
+              <div class="pricing-price">
+                <span class="price-amount">$79</span>
+                <span class="price-period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Up to 10 vehicles</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Priority support</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Premium insurance</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>24/7 roadside assistance</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-full">Get Started</button>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="pricing-title">Enterprise</h3>
+              <div class="pricing-price">
+                <span class="price-amount">$199</span>
+                <span class="price-period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Unlimited vehicles</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Dedicated support</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Comprehensive insurance</span>
+              </div>
+              <div class="pricing-feature">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Custom solutions</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-full">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2025 ByoDrive. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="javascript.js"></script>
+  </body>
+
+</html> 
