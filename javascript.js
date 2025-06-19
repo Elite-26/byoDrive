@@ -23,9 +23,6 @@ function initializeApp() {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
     
-    // Add smooth scrolling to all navigation links
-    addSmoothScrolling();
-    
     // Add intersection observer for animations
     addIntersectionObserver();
 }
@@ -63,35 +60,6 @@ function toggleMenu() {
         menuIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
     }
-}
-
-// Scroll to section smoothly
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-    
-    // Close mobile menu if open
-    if (isMenuOpen) {
-        toggleMenu();
-    }
-}
-
-// Add smooth scrolling to all navigation links
-function addSmoothScrolling() {
-    const navLinks = document.querySelectorAll('[onclick*="scrollToSection"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const sectionId = this.getAttribute('onclick').match(/scrollToSection\('([^']+)'\)/)[1];
-            scrollToSection(sectionId);
-        });
-    });
 }
 
 // Handle form submission
@@ -277,55 +245,7 @@ function addKeyboardNavigation() {
         if (e.key === 'Escape' && isMenuOpen) {
             toggleMenu();
         }
-        
-        // Arrow keys for navigation (optional)
-        if (e.key === 'ArrowDown' && e.ctrlKey) {
-            e.preventDefault();
-            const currentSection = getCurrentSection();
-            const nextSection = getNextSection(currentSection);
-            if (nextSection) {
-                scrollToSection(nextSection);
-            }
-        }
-        
-        if (e.key === 'ArrowUp' && e.ctrlKey) {
-            e.preventDefault();
-            const currentSection = getCurrentSection();
-            const prevSection = getPreviousSection(currentSection);
-            if (prevSection) {
-                scrollToSection(prevSection);
-            }
-        }
     });
-}
-
-// Get current section based on scroll position
-function getCurrentSection() {
-    const sections = ['home', 'services', 'fleet', 'contact'];
-    const scrollY = window.scrollY;
-    
-    for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollY + 100) {
-            return sections[i];
-        }
-    }
-    
-    return 'home';
-}
-
-// Get next section
-function getNextSection(currentSection) {
-    const sections = ['home', 'services', 'fleet', 'contact'];
-    const currentIndex = sections.indexOf(currentSection);
-    return sections[currentIndex + 1] || null;
-}
-
-// Get previous section
-function getPreviousSection(currentSection) {
-    const sections = ['home', 'services', 'fleet', 'contact'];
-    const currentIndex = sections.indexOf(currentSection);
-    return sections[currentIndex - 1] || null;
 }
 
 // Add smooth reveal animations for sections
@@ -387,26 +307,6 @@ document.head.appendChild(styleSheet);
 
 // Export functions for global access (if needed)
 window.ByoDrive = {
-    scrollToSection,
     toggleMenu,
-    handleFormSubmit,
-    handleLogin
-};
-
-// Handle login button click
-function handleLogin() {
-    // Close mobile menu if open
-    if (isMenuOpen) {
-        toggleMenu();
-    }
-    
-    // Show login modal or redirect to login page
-    // For now, we'll show an alert - you can replace this with your login logic
-    alert('Login functionality coming soon!');
-    
-    // Alternative: Redirect to login page
-    // window.location.href = '/login';
-    
-    // Alternative: Open login modal
-    // openLoginModal();
-} 
+    handleFormSubmit
+}; 

@@ -28,32 +28,31 @@
     <nav id="navbar" class="navbar">
       <div class="navbar-container">
         <div class="navbar-brand">
-          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img">
+          <a href="index.html">
+            <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img">
+          </a>
         </div>
         
         <!-- Desktop Navigation -->
         <div class="navbar-nav">
           <div class="navbar-nav-desktop">
-            <button onclick="scrollToSection('home')" class="nav-link">
+            <a href="index.html" class="nav-link active">
               Home
-            </button>
-            <button onclick="scrollToSection('services')" class="nav-link">
-              Services
-            </button>
-            <button onclick="scrollToSection('fleet')" class="nav-link">
-              Fleet
-            </button>
-            <button onclick="scrollToSection('contact')" class="nav-link">
+            </a>
+            <a href="pricing.html" class="nav-link">
+              Pricing
+            </a>
+            <a href="contact.html" class="nav-link">
               Contact
-            </button>
+            </a>
           </div>
         </div>
         
         <!-- Login Button -->
         <div class="navbar-auth">
-          <button onclick="handleLogin()" class="btn btn-login">
+          <a href="login.html" class="btn btn-login">
             Login
-          </button>
+          </a>
         </div>
         
         <!-- Mobile Menu Button -->
@@ -70,18 +69,15 @@
 
       <!-- Mobile menu -->
       <div id="mobile-menu" class="mobile-menu">
-        <button onclick="scrollToSection('home')" class="mobile-menu-item">
+        <a href="index.html" class="mobile-menu-item active">
           Home
-        </button>
-        <button onclick="scrollToSection('services')" class="mobile-menu-item">
-          Services
-        </button>
-        <button onclick="scrollToSection('fleet')" class="mobile-menu-item">
-          Fleet
-        </button>
-        <button onclick="scrollToSection('contact')" class="mobile-menu-item">
+        </a>
+        <a href="pricing.html" class="mobile-menu-item">
+          Pricing
+        </a>
+        <a href="contact.html" class="mobile-menu-item">
           Contact
-        </button>
+        </a>
       </div>
     </nav>
 
@@ -103,213 +99,6 @@
         <p class="hero-subtitle">
           Discover luxury, comfort, and reliability with our premium fleet of vehicles
         </p>
-        <div class="hero-buttons">
-          <button onclick="scrollToSection('fleet')" class="btn btn-primary">
-            Browse Fleet
-          </button>
-          <button onclick="scrollToSection('contact')" class="btn btn-secondary">
-            Book Now
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section section-dark">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Why Choose ByoDrive?</h2>
-          <p class="section-subtitle">
-            We provide exceptional service with premium vehicles and unmatched convenience
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
-                </path>
-              </svg>
-            </div>
-            <h3 class="service-title">Premium Fleet</h3>
-            <p class="service-description">Luxury vehicles maintained to the highest standards</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                </path>
-              </svg>
-            </div>
-            <h3 class="service-title">Fully Insured</h3>
-            <p class="service-description">Comprehensive coverage for your peace of mind</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="service-title">24/7 Support</h3>
-            <p class="service-description">Round-the-clock assistance whenever you need it</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
-                </path>
-              </svg>
-            </div>
-            <h3 class="service-title">Best Rates</h3>
-            <p class="service-description">Competitive pricing with no hidden fees</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Fleet Section -->
-    <section id="fleet" class="section section-darker">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Premium Fleet</h2>
-          <p class="section-subtitle">
-            Choose from our carefully selected collection of luxury vehicles
-          </p>
-        </div>
-
-        <div class="fleet-grid">
-          <div class="fleet-card">
-            <img src="./assets/car1.png" alt="Luxury Sedan" class="fleet-image" />
-            <div class="fleet-content">
-              <h3 class="fleet-title">Luxury Sedan</h3>
-              <p class="fleet-description">Perfect for business trips and city driving</p>
-              <div class="fleet-footer">
-                <div class="fleet-rating">
-                  <svg fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg>
-                  <span class="fleet-rating-text">4.9 (127 reviews)</span>
-                </div>
-                <span class="fleet-price">$89/day</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="fleet-card">
-            <img src="./assets/car2.png" alt="Sports Car" class="fleet-image" />
-            <div class="fleet-content">
-              <h3 class="fleet-title">Sports Car</h3>
-              <p class="fleet-description">Unleash your passion for driving</p>
-              <div class="fleet-footer">
-                <div class="fleet-rating">
-                  <svg fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg>
-                  <span class="fleet-rating-text">4.8 (89 reviews)</span>
-                </div>
-                <span class="fleet-price">$149/day</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="fleet-card">
-            <img src="./assets/car3.png" alt="SUV" class="fleet-image" />
-            <div class="fleet-content">
-              <h3 class="fleet-title">Luxury SUV</h3>
-              <p class="fleet-description">Spacious comfort for family adventures</p>
-              <div class="fleet-footer">
-                <div class="fleet-rating">
-                  <svg fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg>
-                  <span class="fleet-rating-text">4.9 (156 reviews)</span>
-                </div>
-                <span class="fleet-price">$119/day</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section section-dark">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Get In Touch</h2>
-          <p class="section-subtitle">
-            Ready to book your premium vehicle? Contact us today
-          </p>
-        </div>
-        
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3 class="contact-title">Contact Information</h3>
-            <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <span>123 Premium Drive, Luxury City, LC 12345</span>
-            </div>
-            <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-              <span>info@byodrive.com</span>
-            </div>
-            
-            <div class="business-hours">
-              <h4 class="business-hours-title">Business Hours</h4>
-              <div class="business-hours-item">Monday - Friday: 8:00 AM - 8:00 PM</div>
-              <div class="business-hours-item">Saturday: 9:00 AM - 6:00 PM</div>
-              <div class="business-hours-item">Sunday: 10:00 AM - 4:00 PM</div>
-            </div>
-          </div>
-          
-          <div>
-            <form class="contact-form" onsubmit="handleFormSubmit(event)">
-              <div class="form-group">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required />
-              </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required />
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567" />
-              </div>
-              <div class="form-group">
-                <label for="message" class="form-label">Message</label>
-                <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your rental needs..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-full">
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
     </section>
 
