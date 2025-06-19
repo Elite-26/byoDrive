@@ -32,14 +32,14 @@ body {
   width: 100%;
   z-index: 9999;
   transition: all 0.3s ease;
-  background-color: rgba(17, 24, 39, 0.8);
+  background-color: rgba(38, 51, 83, 0);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(55, 65, 81, 0.2);
 }
 
 .navbar.scrolled {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: rgba(38, 51, 83, 0.8);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
@@ -47,15 +47,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem;
+  height: 6rem;
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-logo-img {
+  width: 120px;
+  height: auto;
 }
 
 .navbar-logo {
@@ -69,20 +76,30 @@ body {
 
 .navbar-nav {
   display: none;
-  margin-left: 2.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  flex: 1;
 }
 
 .navbar-nav-desktop {
   display: flex;
   align-items: baseline;
   gap: 2rem;
+  justify-content: center;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .nav-link {
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 20px;
   font-weight: 500;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -113,6 +130,7 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .mobile-menu-toggle:hover {
@@ -616,6 +634,9 @@ html {
 @media (min-width: 768px) {
   .navbar-nav {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .mobile-menu-toggle {
@@ -715,4 +736,26 @@ input, textarea {
 
 input:focus, textarea:focus {
   outline: none;
+}
+
+.btn-login {
+  background: linear-gradient(to right, #a855f7, #3b82f6);
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  background: linear-gradient(to right, #9333ea, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.btn-login:active {
+  transform: translateY(0);
 } 

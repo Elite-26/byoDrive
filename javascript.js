@@ -33,7 +33,7 @@ function initializeApp() {
 // Handle scroll events
 function handleScroll() {
     const scrollY = window.scrollY;
-    const newScrolled = scrollY > 50;
+    const newScrolled = scrollY > 10;
     
     if (newScrolled !== scrolled) {
         scrolled = newScrolled;
@@ -389,5 +389,24 @@ document.head.appendChild(styleSheet);
 window.ByoDrive = {
     scrollToSection,
     toggleMenu,
-    handleFormSubmit
-}; 
+    handleFormSubmit,
+    handleLogin
+};
+
+// Handle login button click
+function handleLogin() {
+    // Close mobile menu if open
+    if (isMenuOpen) {
+        toggleMenu();
+    }
+    
+    // Show login modal or redirect to login page
+    // For now, we'll show an alert - you can replace this with your login logic
+    alert('Login functionality coming soon!');
+    
+    // Alternative: Redirect to login page
+    // window.location.href = '/login';
+    
+    // Alternative: Open login modal
+    // openLoginModal();
+} 

@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ByoDrive - Premium Car Rental Service</title>
-  <meta name="description" content="Premium car rental service with luxury vehicles" />
-  <meta name="author" content="ByoDrive" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByoDrive - Premium Car Rental Service</title>
+    <meta name="description" content="Premium car rental service with luxury vehicles" />
+    <meta name="author" content="ByoDrive" />
 
-  <meta property="og:title" content="ByoDrive - Premium Car Rental Service" />
-  <meta property="og:description" content="Premium car rental service with luxury vehicles" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    <meta property="og:title" content="ByoDrive - Premium Car Rental Service" />
+    <meta property="og:description" content="Premium car rental service with luxury vehicles" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-</head>
+  </head>
 
-<body>
+  <body>
   <div class="page-wrapper">
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
       <div class="navbar-container">
         <div class="navbar-brand">
-          <h1 class="navbar-logo">
-            ByoDrive
-          </h1>
+          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img">
         </div>
         
         <!-- Desktop Navigation -->
@@ -49,6 +47,13 @@
               Contact
             </button>
           </div>
+        </div>
+        
+        <!-- Login Button -->
+        <div class="navbar-auth">
+          <button onclick="handleLogin()" class="btn btn-login">
+            Login
+          </button>
         </div>
         
         <!-- Mobile Menu Button -->
@@ -181,8 +186,7 @@
 
         <div class="fleet-grid">
           <div class="fleet-card">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop"
-              alt="Luxury Sedan" class="fleet-image" />
+            <img src="./assets/car1.png" alt="Luxury Sedan" class="fleet-image" />
             <div class="fleet-content">
               <h3 class="fleet-title">Luxury Sedan</h3>
               <p class="fleet-description">Perfect for business trips and city driving</p>
@@ -201,8 +205,7 @@
           </div>
 
           <div class="fleet-card">
-            <img src="https://images.unsplash.com/photo-1494976688153-018c27012e15?w=600&h=400&fit=crop"
-              alt="Sports Car" class="fleet-image" />
+            <img src="./assets/car2.png" alt="Sports Car" class="fleet-image" />
             <div class="fleet-content">
               <h3 class="fleet-title">Sports Car</h3>
               <p class="fleet-description">Unleash your passion for driving</p>
@@ -221,8 +224,7 @@
           </div>
 
           <div class="fleet-card">
-            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop"
-              alt="SUV" class="fleet-image" />
+            <img src="./assets/car3.png" alt="SUV" class="fleet-image" />
             <div class="fleet-content">
               <h3 class="fleet-title">Luxury SUV</h3>
               <p class="fleet-description">Spacious comfort for family adventures</p>
@@ -322,7 +324,7 @@
         </p>
         <div class="footer-divider">
           <p class="footer-copyright">
-            © 2024 ByoDrive. All rights reserved.
+            © 2025 ByoDrive. All rights reserved.
           </p>
         </div>
       </div>
@@ -330,6 +332,6 @@
   </div>
 
   <script src="javascript.js"></script>
-</body>
+  </body>
 
 </html>
