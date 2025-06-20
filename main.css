@@ -85,7 +85,7 @@ body {
 .navbar-nav-desktop {
   display: flex;
   align-items: baseline;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
 }
 
@@ -762,4 +762,122 @@ input:focus, textarea:focus {
 
 .btn-login:active {
   transform: translateY(0);
+}
+
+/* Legal Content Styles */
+.legal-content {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.legal-section {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: rgba(55, 65, 81, 0.1);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  transition: all 0.3s ease;
+}
+
+.legal-section:hover {
+  background-color: rgba(55, 65, 81, 0.2);
+  border-color: rgba(75, 85, 99, 0.3);
+  transform: translateY(-2px);
+}
+
+.legal-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #c084fc;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legal-subtitle::before {
+  content: '';
+  width: 0.25rem;
+  height: 1.5rem;
+  background: linear-gradient(to bottom, #c084fc, #60a5fa);
+  border-radius: 0.125rem;
+}
+
+.legal-section p {
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.legal-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.legal-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.legal-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #c084fc;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.legal-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Light/Dark Variations */
+.section-light {
+  background-color: #1f2937;
+}
+
+.section-light .legal-section {
+  background-color: rgba(17, 24, 39, 0.3);
+  border-color: rgba(55, 65, 81, 0.3);
+}
+
+.section-light .legal-section:hover {
+  background-color: rgba(17, 24, 39, 0.4);
+  border-color: rgba(55, 65, 81, 0.4);
+}
+
+.section-dark .legal-section {
+  background-color: rgba(55, 65, 81, 0.2);
+  border-color: rgba(75, 85, 99, 0.3);
+}
+
+.section-dark .legal-section:hover {
+  background-color: rgba(55, 65, 81, 0.3);
+  border-color: rgba(75, 85, 99, 0.4);
+}
+
+/* Responsive adjustments for legal content */
+@media (max-width: 768px) {
+  .legal-content {
+    padding: 1rem 0;
+  }
+  
+  .legal-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .legal-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .legal-list li {
+    padding-left: 1.25rem;
+  }
 } 

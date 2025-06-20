@@ -390,7 +390,9 @@ window.ByoDrive = {
     scrollToSection,
     toggleMenu,
     handleFormSubmit,
-    handleLogin
+    handleLogin,
+    openTermsOfService,
+    openPrivacyPolicy
 };
 
 // Handle login button click
@@ -409,4 +411,26 @@ function handleLogin() {
     
     // Alternative: Open login modal
     // openLoginModal();
+}
+
+// Handle Terms of Service button click
+function openTermsOfService() {
+    // Close mobile menu if open
+    if (isMenuOpen) {
+        toggleMenu();
+    }
+    
+    // Scroll to terms of service section
+    scrollToSection('terms-of-service');
+}
+
+// Handle Privacy Policy button click
+function openPrivacyPolicy() {
+    // Close mobile menu if open
+    if (isMenuOpen) {
+        toggleMenu();
+    }
+    
+    // Scroll to privacy policy section
+    scrollToSection('privacy-policy');
 } 
