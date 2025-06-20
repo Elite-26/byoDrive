@@ -84,7 +84,6 @@ body {
 
 .navbar-nav-desktop {
   display: flex;
-  align-items: baseline;
   gap: 1rem;
   justify-content: center;
 }
@@ -141,6 +140,14 @@ body {
 .mobile-menu-toggle:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Right side container for login and menu buttons */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .mobile-menu {
@@ -649,14 +656,17 @@ html {
 
 @media (min-width: 768px) {
   .navbar-nav {
+    display: none;
+  }
+  
+  .navbar-right {
     display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    align-items: center;
+    gap: 0.5rem;
   }
   
   .mobile-menu-toggle {
-    display: none;
+    display: flex;
   }
   
   .pricing-grid {
@@ -673,6 +683,23 @@ html {
 }
 
 @media (min-width: 1024px) {
+  .navbar-nav {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
   .container {
     padding: 0 2rem;
   }
