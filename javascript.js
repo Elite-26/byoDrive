@@ -454,17 +454,23 @@ function switchTab(tabName) {
     const tabButtons = document.querySelectorAll('.tab-btn');
     tabButtons.forEach(btn => btn.classList.remove('active'));
     
+    // Hide all tab content
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => content.classList.remove('active'));
+    
     // Add active class to clicked tab
     const activeTab = document.querySelector(`[onclick="switchTab('${tabName}')"]`);
     if (activeTab) {
         activeTab.classList.add('active');
     }
     
-    // Here you can add logic to show/hide different content based on the selected tab
-    console.log('Switched to tab:', tabName);
+    // Show corresponding content
+    const activeContent = document.getElementById(`${tabName}-content`);
+    if (activeContent) {
+        activeContent.classList.add('active');
+    }
     
-    // Example: You can implement content switching here
-    // showTabContent(tabName);
+    console.log('Switched to tab:', tabName);
 }
 
 // Handle Terms of Service button click
