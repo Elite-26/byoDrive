@@ -156,6 +156,23 @@ body {
   flex-shrink: 0;
 }
 
+/* Center section for welcome message */
+.navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.navbar-welcome {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+}
+
 .mobile-menu {
   display: none;
   background-color: rgba(17, 24, 39, 0.95);
@@ -904,20 +921,33 @@ input:focus, textarea:focus {
 /* Responsive adjustments for legal content */
 @media (max-width: 768px) {
   .legal-content {
-    padding: 1rem 0;
+    padding: 1rem;
   }
   
   .legal-section {
-    padding: 1rem;
     margin-bottom: 1.5rem;
   }
   
   .legal-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.1rem;
   }
   
   .legal-list li {
-    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Hide navbar welcome on mobile */
+  .navbar-center {
+    display: none;
+  }
+  
+  /* Show welcome in mobile menu */
+  .mobile-menu .navbar-welcome {
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -1052,7 +1082,6 @@ input:focus, textarea:focus {
 /* Dashboard Styles */
 .dashboard-section {
   min-height: 100vh;
-  padding: 2rem 0;
 }
 
 .dashboard-header {
@@ -1212,6 +1241,13 @@ input:focus, textarea:focus {
   margin-right: 0.5rem;
 }
 
+/* Logout Icon */
+.logout-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
 /* Responsive Design */
 @media (min-width: 768px) {
   .dashboard-grid {
@@ -1231,4 +1267,132 @@ input:focus, textarea:focus {
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Membership Card Styles */
+.membership-card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.membership-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.membership-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.membership-type {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.membership-status {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.membership-status.inactive {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.membership-content {
+  margin-bottom: 2rem;
+}
+
+.membership-info {
+  text-align: center;
+}
+
+.membership-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.membership-description {
+  color: #d1d5db;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.membership-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.manage-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Tabs Styles */
+.tabs-container {
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.tab-btn.active {
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.5);
+}
+
+.tab-btn.active:hover {
+  background: rgba(192, 132, 252, 0.15);
 } 

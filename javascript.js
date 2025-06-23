@@ -413,6 +413,60 @@ function handleLogin() {
     window.location.href = 'login.html';
 }
 
+// Handle logout button click
+function handleLogout() {
+    // Close mobile menu if open
+    if (isMenuOpen) {
+        toggleMenu();
+    }
+    
+    // Navigate back to landing page
+    window.location.href = 'index.html';
+}
+
+// Set user name (can be called after successful login)
+function setUserName(name) {
+    const userNameElement = document.getElementById('user-name');
+    const userNameMobileElement = document.getElementById('user-name-mobile');
+    
+    if (userNameElement) {
+        userNameElement.textContent = name;
+    }
+    
+    if (userNameMobileElement) {
+        userNameMobileElement.textContent = name;
+    }
+}
+
+// Handle SSO provider login
+function loginWithProvider(provider, userName) {
+    // Store user information in sessionStorage for the dashboard
+    sessionStorage.setItem('currentUser', userName);
+    sessionStorage.setItem('loginProvider', provider);
+    
+    // Navigate to dashboard
+    window.location.href = 'dashboard.html';
+}
+
+// Handle tab switching
+function switchTab(tabName) {
+    // Remove active class from all tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked tab
+    const activeTab = document.querySelector(`[onclick="switchTab('${tabName}')"]`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
+    
+    // Here you can add logic to show/hide different content based on the selected tab
+    console.log('Switched to tab:', tabName);
+    
+    // Example: You can implement content switching here
+    // showTabContent(tabName);
+}
+
 // Handle Terms of Service button click
 function openTermsOfService() {
     // Close mobile menu if open
