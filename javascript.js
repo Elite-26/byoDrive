@@ -420,8 +420,8 @@ function openTermsOfService() {
         toggleMenu();
     }
     
-    // Scroll to terms of service section
-    scrollToSection('terms-of-service');
+    // Navigate to terms of service page
+    window.location.href = 'terms.html';
 }
 
 // Handle Privacy Policy button click
@@ -431,6 +431,6 @@ function openPrivacyPolicy() {
         toggleMenu();
     }
     
-    // Scroll to privacy policy section
-    scrollToSection('privacy-policy');
+    // Navigate to privacy policy page
+    window.location.href = 'privacy.html';
 } 
