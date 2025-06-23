@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - ByoDrive</title>
+    <meta name="description" content="Login to ByoDrive - Premium Car Rental Service" />
+    <meta name="author" content="ByoDrive" />
+
+    <meta property="og:title" content="Login - ByoDrive" />
+    <meta property="og:description" content="Login to ByoDrive - Premium Car Rental Service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img" onclick="window.location.href='index.html'" style="cursor: pointer;">
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <button onclick="window.location.href='index.html#home'" class="nav-link">
+              Home
+            </button>
+            <button onclick="window.location.href='index.html#pricing'" class="nav-link">
+              Pricing
+            </button>
+            <button onclick="window.location.href='terms.html'" class="nav-link">
+              Terms of Service
+            </button>
+            <button onclick="window.location.href='privacy.html'" class="nav-link">
+              Privacy Policy
+            </button>
+            <button onclick="window.location.href='index.html#contact'" class="nav-link">
+              Contact
+            </button>
+          </div>
+        </div>
+        
+        <!-- Right side buttons -->
+        <div class="navbar-right">
+          <!-- Login Button -->
+          <div class="navbar-auth">
+            <button onclick="window.location.href='login.html'" class="btn btn-login active">
+              Login
+            </button>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMenu()" class="mobile-menu-toggle">
+            <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+            <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <button onclick="window.location.href='index.html#home'" class="mobile-menu-item">
+          Home
+        </button>
+        <button onclick="window.location.href='index.html#pricing'" class="mobile-menu-item">
+          Pricing
+        </button>
+        <button onclick="window.location.href='terms.html'" class="mobile-menu-item">
+          Terms of Service
+        </button>
+        <button onclick="window.location.href='privacy.html'" class="mobile-menu-item">
+          Privacy Policy
+        </button>
+        <button onclick="window.location.href='index.html#contact'" class="mobile-menu-item">
+          Contact
+        </button>
+      </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="section section-dark login-section">
+      <div class="container">
+        <div class="login-container">
+          <div class="login-card">
+            <div class="login-header">
+              <h2 class="login-title">Login with SSO Provider</h2>
+              <p class="login-subtitle">
+                Choose your preferred cloud storage provider to access ByoDrive
+              </p>
+            </div>
+            
+            <div class="sso-providers">
+              <button onclick="window.location.href='dashboard.html'" class="sso-provider-btn google-btn">
+                <div class="sso-provider-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  </svg>
+                </div>
+                <div class="sso-provider-content">
+                  <span class="sso-provider-name">Google</span>
+                  <span class="sso-provider-desc">Sign in with Google Drive</span>
+                </div>
+              </button>
+              
+              <button onclick="window.location.href='dashboard.html'" class="sso-provider-btn microsoft-btn">
+                <div class="sso-provider-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.5 2.75h-8a.75.75 0 0 0-.75.75v8c0 .414.336.75.75.75h8a.75.75 0 0 0 .75-.75v-8a.75.75 0 0 0-.75-.75zm-8-1.5h8a2.25 2.25 0 0 1 2.25 2.25v8a2.25 2.25 0 0 1-2.25 2.25h-8a2.25 2.25 0 0 1-2.25-2.25v-8A2.25 2.25 0 0 1 3.5 1.25z"/>
+                    <path d="M20.5 2.75h-8a.75.75 0 0 0-.75.75v8c0 .414.336.75.75.75h8a.75.75 0 0 0 .75-.75v-8a.75.75 0 0 0-.75-.75zm-8-1.5h8a2.25 2.25 0 0 1 2.25 2.25v8a2.25 2.25 0 0 1-2.25 2.25h-8a2.25 2.25 0 0 1-2.25-2.25v-8A2.25 2.25 0 0 1 12.5 1.25z"/>
+                    <path d="M11.5 12.75h-8a.75.75 0 0 0-.75.75v8c0 .414.336.75.75.75h8a.75.75 0 0 0 .75-.75v-8a.75.75 0 0 0-.75-.75zm-8-1.5h8a2.25 2.25 0 0 1 2.25 2.25v8a2.25 2.25 0 0 1-2.25 2.25h-8a2.25 2.25 0 0 1-2.25-2.25v-8a2.25 2.25 0 0 1 2.25-2.25z"/>
+                    <path d="M20.5 12.75h-8a.75.75 0 0 0-.75.75v8c0 .414.336.75.75.75h8a.75.75 0 0 0 .75-.75v-8a.75.75 0 0 0-.75-.75zm-8-1.5h8a2.25 2.25 0 0 1 2.25 2.25v8a2.25 2.25 0 0 1-2.25 2.25h-8a2.25 2.25 0 0 1-2.25-2.25v-8a2.25 2.25 0 0 1 2.25-2.25z"/>
+                  </svg>
+                </div>
+                <div class="sso-provider-content">
+                  <span class="sso-provider-name">Microsoft OneDrive</span>
+                  <span class="sso-provider-desc">Sign in with OneDrive</span>
+                </div>
+              </button>
+              
+              <button onclick="window.location.href='dashboard.html'" class="sso-provider-btn dropbox-btn">
+                <div class="sso-provider-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 9l6-3.5L18 9l-6 3.5L6 9z"/>
+                    <path d="M6 15l6 3.5L18 15l-6-3.5L6 15z"/>
+                    <path d="M12 12.5L6 9v6l6 3.5 6-3.5V9l-6 3.5z"/>
+                  </svg>
+                </div>
+                <div class="sso-provider-content">
+                  <span class="sso-provider-name">Dropbox</span>
+                  <span class="sso-provider-desc">Sign in with Dropbox</span>
+                </div>
+              </button>
+            </div>
+            
+            <div class="login-footer">
+              <p class="login-footer-text">
+                By signing in, you agree to our 
+                <a href="terms.html" class="login-footer-link">Terms of Service</a> and 
+                <a href="privacy.html" class="login-footer-link">Privacy Policy</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2025 ByoDrive. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="javascript.js"></script>
+  </body>
+
+</html> 

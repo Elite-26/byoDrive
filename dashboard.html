@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - ByoDrive</title>
+    <meta name="description" content="ByoDrive Dashboard - Premium Car Rental Service" />
+    <meta name="author" content="ByoDrive" />
+
+    <meta property="og:title" content="Dashboard - ByoDrive" />
+    <meta property="og:description" content="ByoDrive Dashboard - Premium Car Rental Service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img" onclick="window.location.href='dashboard.html'" style="cursor: pointer;">
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <button onclick="window.location.href='dashboard.html'" class="nav-link active">
+              Dashboard
+            </button>
+            <button onclick="window.location.href='dashboard.html#vehicles'" class="nav-link">
+              My Vehicles
+            </button>
+            <button onclick="window.location.href='dashboard.html#bookings'" class="nav-link">
+              Bookings
+            </button>
+            <button onclick="window.location.href='dashboard.html#profile'" class="nav-link">
+              Profile
+            </button>
+          </div>
+        </div>
+        
+        <!-- Right side buttons -->
+        <div class="navbar-right">
+          <!-- User Menu -->
+          <div class="navbar-auth">
+            <button onclick="toggleUserMenu()" class="btn btn-login">
+              <svg class="user-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+              <span>John Doe</span>
+            </button>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMenu()" class="mobile-menu-toggle">
+            <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+            <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <button onclick="window.location.href='dashboard.html'" class="mobile-menu-item active">
+          Dashboard
+        </button>
+        <button onclick="window.location.href='dashboard.html#vehicles'" class="mobile-menu-item">
+          My Vehicles
+        </button>
+        <button onclick="window.location.href='dashboard.html#bookings'" class="mobile-menu-item">
+          Bookings
+        </button>
+        <button onclick="window.location.href='dashboard.html#profile'" class="mobile-menu-item">
+          Profile
+        </button>
+      </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="section section-dark dashboard-section">
+      <div class="container">
+        <div class="dashboard-header">
+          <h2 class="dashboard-title">Welcome back, John!</h2>
+          <p class="dashboard-subtitle">
+            Here's what's happening with your ByoDrive account
+          </p>
+        </div>
+        
+        <div class="dashboard-grid">
+          <!-- Quick Stats -->
+          <div class="dashboard-card stats-card">
+            <h3 class="dashboard-card-title">Quick Stats</h3>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Active Rentals</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total Rentals</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">4.9</div>
+                <div class="stat-label">Rating</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Recent Activity -->
+          <div class="dashboard-card activity-card">
+            <h3 class="dashboard-card-title">Recent Activity</h3>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Rental Confirmed</div>
+                  <div class="activity-desc">BMW X5 - Pickup scheduled for tomorrow</div>
+                  <div class="activity-time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Payment Processed</div>
+                  <div class="activity-desc">$89.99 for Mercedes C-Class rental</div>
+                  <div class="activity-time">1 day ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Vehicle Returned</div>
+                  <div class="activity-desc">Audi A4 - Returned on time</div>
+                  <div class="activity-time">3 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quick Actions -->
+          <div class="dashboard-card actions-card">
+            <h3 class="dashboard-card-title">Quick Actions</h3>
+            <div class="actions-grid">
+              <button class="action-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <span>Book New Vehicle</span>
+              </button>
+              <button class="action-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+                <span>View Bookings</span>
+              </button>
+              <button class="action-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+                <span>Update Profile</span>
+              </button>
+              <button class="action-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Get Help</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2025 ByoDrive. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="javascript.js"></script>
+  </body>
+
+</html> 

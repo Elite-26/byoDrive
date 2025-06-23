@@ -65,6 +65,13 @@ function toggleMenu() {
     }
 }
 
+// Toggle user menu (for dashboard)
+function toggleUserMenu() {
+    // For now, just show a simple alert
+    // You can implement a dropdown menu here later
+    alert('User menu functionality coming soon!');
+}
+
 // Scroll to section smoothly
 function scrollToSection(sectionId) {
     const element = document.getElementById(sectionId);
@@ -402,15 +409,8 @@ function handleLogin() {
         toggleMenu();
     }
     
-    // Show login modal or redirect to login page
-    // For now, we'll show an alert - you can replace this with your login logic
-    alert('Login functionality coming soon!');
-    
-    // Alternative: Redirect to login page
-    // window.location.href = '/login';
-    
-    // Alternative: Open login modal
-    // openLoginModal();
+    // Navigate to login page
+    window.location.href = 'login.html';
 }
 
 // Handle Terms of Service button click
