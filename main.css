@@ -114,6 +114,12 @@ body {
   transform: translateY(-1px);
 }
 
+.nav-link.active {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
 .nav-link:active {
   transform: translateY(0);
 }
@@ -178,6 +184,12 @@ body {
 
 .mobile-menu-item:hover {
   color: #c084fc;
+}
+
+.mobile-menu-item.active {
+  color: #c084fc;
+  background-color: rgba(168, 85, 247, 0.1);
+  border-left: 3px solid #c084fc;
 }
 
 .menu-icon {

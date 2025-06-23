@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - ByoDrive</title>
+    <meta name="description" content="Privacy Policy for ByoDrive - Premium Car Rental Service" />
+    <meta name="author" content="ByoDrive" />
+
+    <meta property="og:title" content="Privacy Policy - ByoDrive" />
+    <meta property="og:description" content="Privacy Policy for ByoDrive - Premium Car Rental Service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img" onclick="window.location.href='index.html'" style="cursor: pointer;">
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <button onclick="window.location.href='index.html#home'" class="nav-link">
+              Home
+            </button>
+            <button onclick="window.location.href='index.html#pricing'" class="nav-link">
+              Pricing
+            </button>
+            <button onclick="window.location.href='terms.html'" class="nav-link">
+              Terms of Service
+            </button>
+            <button onclick="window.location.href='privacy.html'" class="nav-link active">
+              Privacy Policy
+            </button>
+            <button onclick="window.location.href='index.html#contact'" class="nav-link">
+              Contact
+            </button>
+          </div>
+        </div>
+        
+        <!-- Right side buttons -->
+        <div class="navbar-right">
+          <!-- Login Button -->
+          <div class="navbar-auth">
+            <button onclick="handleLogin()" class="btn btn-login">
+              Login
+            </button>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMenu()" class="mobile-menu-toggle">
+            <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+            <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <button onclick="window.location.href='index.html#home'" class="mobile-menu-item">
+          Home
+        </button>
+        <button onclick="window.location.href='index.html#pricing'" class="mobile-menu-item">
+          Pricing
+        </button>
+        <button onclick="window.location.href='terms.html'" class="mobile-menu-item">
+          Terms of Service
+        </button>
+        <button onclick="window.location.href='privacy.html'" class="mobile-menu-item active">
+          Privacy Policy
+        </button>
+        <button onclick="window.location.href='index.html#contact'" class="mobile-menu-item">
+          Contact
+        </button>
+      </div>
+    </nav>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy-policy" class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Privacy Policy</h2>
+          <p class="section-subtitle">
+            How we collect, use, and protect your personal information
+          </p>
+        </div>
+        
+        <div class="legal-content">
+          <div class="legal-section">
+            <h3 class="legal-subtitle">1. Information We Collect</h3>
+            <p>We collect information you provide directly to us, such as when you create an account, make a reservation, or contact us for support.</p>
+            <ul class="legal-list">
+              <li>Personal identification information (name, email address, phone number)</li>
+              <li>Driver's license information</li>
+              <li>Payment information</li>
+              <li>Rental history and preferences</li>
+            </ul>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">2. How We Use Your Information</h3>
+            <p>We use the information we collect to:</p>
+            <ul class="legal-list">
+              <li>Process your reservations and payments</li>
+              <li>Provide customer support and assistance</li>
+              <li>Send you important updates about your rentals</li>
+              <li>Improve our services and develop new features</li>
+              <li>Comply with legal obligations</li>
+            </ul>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">3. Information Sharing</h3>
+            <p>We do not sell, trade, or otherwise transfer your personal information to third parties except as described in this policy or with your consent.</p>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">4. Data Security</h3>
+            <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">5. Your Rights</h3>
+            <p>You have the right to:</p>
+            <ul class="legal-list">
+              <li>Access your personal information</li>
+              <li>Correct inaccurate information</li>
+              <li>Request deletion of your information</li>
+              <li>Opt-out of marketing communications</li>
+            </ul>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">6. Cookies and Tracking</h3>
+            <p>We use cookies and similar technologies to enhance your experience on our website and analyze usage patterns.</p>
+          </div>
+          
+          <div class="legal-section">
+            <h3 class="legal-subtitle">7. Contact Us</h3>
+            <p>If you have questions about this privacy policy, please contact us at privacy@byodrive.com or call +1 (555) 123-4567.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2025 ByoDrive. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="javascript.js"></script>
+  </body>
+
+</html> 
