@@ -454,17 +454,23 @@ function switchTab(tabName) {
     const tabButtons = document.querySelectorAll('.tab-btn');
     tabButtons.forEach(btn => btn.classList.remove('active'));
     
+    // Hide all tab content
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => content.classList.remove('active'));
+    
     // Add active class to clicked tab
     const activeTab = document.querySelector(`[onclick="switchTab('${tabName}')"]`);
     if (activeTab) {
         activeTab.classList.add('active');
     }
     
-    // Here you can add logic to show/hide different content based on the selected tab
-    console.log('Switched to tab:', tabName);
+    // Show corresponding content
+    const activeContent = document.getElementById(`${tabName}-content`);
+    if (activeContent) {
+        activeContent.classList.add('active');
+    }
     
-    // Example: You can implement content switching here
-    // showTabContent(tabName);
+    console.log('Switched to tab:', tabName);
 }
 
 // Handle Terms of Service button click
@@ -487,4 +493,30 @@ function openPrivacyPolicy() {
     
     // Navigate to privacy policy page
     window.location.href = 'privacy.html';
+}
+
+// Handle plan radio button selection
+function handlePlanSelection(planId) {
+    // Remove selected class from all manage buttons
+    const manageButtons = document.querySelectorAll('.plan-manage-btn');
+    manageButtons.forEach(btn => btn.classList.remove('selected'));
+    
+    // Add selected class to the corresponding manage button
+    const selectedPlanCard = document.getElementById(planId).closest('.plan-card');
+    const manageButton = selectedPlanCard.querySelector('.plan-manage-btn');
+    if (manageButton) {
+        manageButton.classList.add('selected');
+    }
+}
+
+// Initialize plan selection functionality
+function initializePlanSelection() {
+    const planRadios = document.querySelectorAll('.plan-radio');
+    planRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                handlePlanSelection(this.id);
+            }
+        });
+    });
 } 
