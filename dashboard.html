@@ -218,14 +218,14 @@
                   </div>
                 </div>
                 
-                <!-- 30 Days Membership -->
+                <!-- Unlimited plan -->
                 <div class="plan-card">
                   <div class="plan-card-header">
                     <input type="radio" name="plan" id="plan-30days" class="plan-radio">
                     <label for="plan-30days" class="plan-label">
                       <div class="plan-info">
-                        <span class="plan-name">30 days membership</span>
-                        <span class="plan-credits">8 credits</span>
+                        <span class="plan-name">Unlimited plan</span>
+                        <span class="plan-credits">5 credits/month</span>
                       </div>
                     </label>
                   </div>
@@ -234,14 +234,14 @@
                   </div>
                 </div>
                 
-                <!-- 90 Days Membership -->
+                <!-- Corporate family plan -->
                 <div class="plan-card">
                   <div class="plan-card-header">
                     <input type="radio" name="plan" id="plan-90days" class="plan-radio">
                     <label for="plan-90days" class="plan-label">
                       <div class="plan-info">
-                        <span class="plan-name">90 days membership</span>
-                        <span class="plan-credits">20 credits</span>
+                        <span class="plan-name">Corporate family plan</span>
+                        <span class="plan-credits">5 credits/month</span>
                       </div>
                     </label>
                   </div>
@@ -285,9 +285,27 @@
         
         <!-- Settings Section -->
         <div id="settings-content" class="tab-content">
-          <div class="tab-placeholder">
-            <h3>Settings</h3>
-            <p>Account settings and preferences will be displayed here.</p>
+          <div class="settings-container">
+            <div class="settings-section">
+              <h3 class="section-title">Personal Information</h3>
+              
+              <div class="settings-table-container">
+                <table class="settings-table">
+                  <thead>
+                    <tr>
+                      <th>User Name</th>
+                      <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td id="settings-user-name">John Doe</td>
+                      <td id="settings-user-email">john.doe@example.com</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -318,6 +336,20 @@
       const currentUser = sessionStorage.getItem('currentUser');
       if (currentUser) {
         setUserName(currentUser);
+        
+        // Set settings user information
+        const settingsUserName = document.getElementById('settings-user-name');
+        const settingsUserEmail = document.getElementById('settings-user-email');
+        
+        if (settingsUserName) {
+          settingsUserName.textContent = currentUser;
+        }
+        
+        if (settingsUserEmail) {
+          // Generate email from username (you can modify this logic as needed)
+          const email = currentUser.toLowerCase().replace(/\s+/g, '.') + '@example.com';
+          settingsUserEmail.textContent = email;
+        }
       }
       
       // Initialize plan selection functionality
