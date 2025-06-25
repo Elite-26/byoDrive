@@ -542,4 +542,86 @@ function initializeMembershipManage() {
     if (manageButton) {
         manageButton.addEventListener('click', handleMembershipManage);
     }
+}
+
+// Handle Add Payment Method button click
+function handleAddPaymentMethod() {
+    openAddCardModal();
+}
+
+// Open Add Card Modal
+function openAddCardModal() {
+    const modal = document.getElementById('add-card-modal');
+    if (modal) {
+        modal.classList.add('active');
+        // Reset to initial state
+        resetLinkCardForm();
+    }
+}
+
+// Close Add Card Modal
+function closeAddCardModal() {
+    const modal = document.getElementById('add-card-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        // Reset to initial state
+        resetLinkCardForm();
+    }
+}
+
+// Show Link Card Form
+function showLinkCardForm() {
+    const linkPaymentOption = document.getElementById('link-payment-option');
+    const linkCardForm = document.getElementById('link-card-form');
+    
+    if (linkPaymentOption && linkCardForm) {
+        linkPaymentOption.classList.add('hidden');
+        linkCardForm.classList.remove('hidden');
+    }
+}
+
+// Close Link Card Form (return to original state)
+function closeLinkCardForm() {
+    const linkPaymentOption = document.getElementById('link-payment-option');
+    const linkCardForm = document.getElementById('link-card-form');
+    
+    if (linkPaymentOption && linkCardForm) {
+        linkPaymentOption.classList.remove('hidden');
+        linkCardForm.classList.add('hidden');
+        // Clear email input
+        const emailInput = document.getElementById('link-email');
+        if (emailInput) {
+            emailInput.value = '';
+        }
+    }
+}
+
+// Reset Link Card Form to initial state
+function resetLinkCardForm() {
+    const linkPaymentOption = document.getElementById('link-payment-option');
+    const linkCardForm = document.getElementById('link-card-form');
+    
+    if (linkPaymentOption && linkCardForm) {
+        linkPaymentOption.classList.remove('hidden');
+        linkCardForm.classList.add('hidden');
+        // Clear email input
+        const emailInput = document.getElementById('link-email');
+        if (emailInput) {
+            emailInput.value = '';
+        }
+    }
+}
+
+// Initialize Add Payment Method functionality
+function initializeAddPaymentMethod() {
+    const addPaymentBtn = document.querySelector('.add-payment-btn');
+    if (addPaymentBtn) {
+        addPaymentBtn.addEventListener('click', handleAddPaymentMethod);
+    }
+    
+    // Add click event to Link payment option
+    const linkPaymentOption = document.getElementById('link-payment-option');
+    if (linkPaymentOption) {
+        linkPaymentOption.addEventListener('click', showLinkCardForm);
+    }
 } 
