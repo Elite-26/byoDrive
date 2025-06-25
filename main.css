@@ -1082,7 +1082,6 @@ input:focus, textarea:focus {
 /* Dashboard Styles */
 .dashboard-section {
   min-height: 100vh;
-  padding: 2rem 0;
 }
 
 /* User Icon */
@@ -1336,4 +1335,199 @@ input:focus, textarea:focus {
   color: #d1d5db;
   font-size: 1rem;
   margin: 0;
+}
+
+/* Payment Section Styles */
+.payments-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.plan-section {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.plan-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.plan-card {
+  background: rgba(31, 41, 55, 0.6);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  border-color: rgba(192, 132, 252, 0.3);
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.plan-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.plan-radio {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(156, 163, 175, 0.5);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.plan-radio:checked {
+  border-color: #c084fc;
+  background: #c084fc;
+}
+
+.plan-radio:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #1f2937;
+  border-radius: 50%;
+}
+
+.plan-label {
+  flex: 1;
+  cursor: pointer;
+}
+
+.plan-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.plan-name {
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.plan-credits {
+  font-weight: 600;
+  color: #c084fc;
+  font-size: 1rem;
+}
+
+.plan-card-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.plan-manage-btn {
+  background: transparent;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  color: #9ca3af;
+  transition: all 0.3s ease;
+}
+
+.plan-manage-btn:hover {
+  background: rgba(192, 132, 252, 0.1);
+  border-color: #c084fc;
+  color: #c084fc;
+}
+
+.plan-manage-btn.selected {
+  background: #c084fc;
+  border-color: #c084fc;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.plan-buy-btn {
+  background: #c084fc;
+  border: 1px solid #c084fc;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.plan-buy-btn:hover {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+.card-details-section {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.card-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.card-details-info {
+  flex: 1;
+}
+
+.add-payment-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #c084fc;
+  border: 1px solid #c084fc;
+  color: #1f2937;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.add-payment-btn:hover {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+.add-payment-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Responsive design for payments */
+@media (max-width: 768px) {
+  .payments-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-details-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .add-payment-btn {
+    justify-content: center;
+  }
+  
+  .plan-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 } 

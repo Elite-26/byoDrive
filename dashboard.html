@@ -193,9 +193,93 @@
         
         <!-- Payments Section -->
         <div id="payments-content" class="tab-content">
-          <div class="tab-placeholder">
-            <h3>Payments</h3>
-            <p>Payment information and history will be displayed here.</p>
+          <div class="payments-container">
+            <!-- Plan Section -->
+            <div class="plan-section">
+              <div class="section-header">
+                <h3 class="section-title">Plan</h3>
+                <p class="section-subtitle">Manage your membership</p>
+              </div>
+              
+              <div class="plan-cards">
+                <!-- 7 Days Membership -->
+                <div class="plan-card">
+                  <div class="plan-card-header">
+                    <input type="radio" name="plan" id="plan-7days" class="plan-radio">
+                    <label for="plan-7days" class="plan-label">
+                      <div class="plan-info">
+                        <span class="plan-name">7 days membership</span>
+                        <span class="plan-credits">2 credits</span>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="plan-card-footer">
+                    <button class="btn btn-secondary plan-manage-btn">Manage</button>
+                  </div>
+                </div>
+                
+                <!-- 30 Days Membership -->
+                <div class="plan-card">
+                  <div class="plan-card-header">
+                    <input type="radio" name="plan" id="plan-30days" class="plan-radio">
+                    <label for="plan-30days" class="plan-label">
+                      <div class="plan-info">
+                        <span class="plan-name">30 days membership</span>
+                        <span class="plan-credits">8 credits</span>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="plan-card-footer">
+                    <button class="btn btn-secondary plan-manage-btn">Manage</button>
+                  </div>
+                </div>
+                
+                <!-- 90 Days Membership -->
+                <div class="plan-card">
+                  <div class="plan-card-header">
+                    <input type="radio" name="plan" id="plan-90days" class="plan-radio">
+                    <label for="plan-90days" class="plan-label">
+                      <div class="plan-info">
+                        <span class="plan-name">90 days membership</span>
+                        <span class="plan-credits">20 credits</span>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="plan-card-footer">
+                    <button class="btn btn-secondary plan-manage-btn">Manage</button>
+                  </div>
+                </div>
+                
+                <!-- Remaining Credits -->
+                <div class="plan-card">
+                  <div class="plan-card-header">
+                    <div class="plan-info">
+                      <span class="plan-name">0 Your remaining credit</span>
+                      <span class="plan-credits">$1/credit</span>
+                    </div>
+                  </div>
+                  <div class="plan-card-footer">
+                    <button class="btn btn-primary plan-buy-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card Details Section -->
+            <div class="card-details-section">
+              <div class="card-details-header">
+                <div class="card-details-info">
+                  <h3 class="section-title">Card details</h3>
+                  <p class="section-subtitle">Manage your card details</p>
+                </div>
+                <button class="btn btn-primary add-payment-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                  Add Payment Method
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -234,6 +318,11 @@
       const currentUser = sessionStorage.getItem('currentUser');
       if (currentUser) {
         setUserName(currentUser);
+      }
+      
+      // Initialize plan selection functionality
+      if (typeof initializePlanSelection === 'function') {
+        initializePlanSelection();
       }
     });
   </script>

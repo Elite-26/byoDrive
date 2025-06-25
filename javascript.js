@@ -493,4 +493,30 @@ function openPrivacyPolicy() {
     
     // Navigate to privacy policy page
     window.location.href = 'privacy.html';
+}
+
+// Handle plan radio button selection
+function handlePlanSelection(planId) {
+    // Remove selected class from all manage buttons
+    const manageButtons = document.querySelectorAll('.plan-manage-btn');
+    manageButtons.forEach(btn => btn.classList.remove('selected'));
+    
+    // Add selected class to the corresponding manage button
+    const selectedPlanCard = document.getElementById(planId).closest('.plan-card');
+    const manageButton = selectedPlanCard.querySelector('.plan-manage-btn');
+    if (manageButton) {
+        manageButton.classList.add('selected');
+    }
+}
+
+// Initialize plan selection functionality
+function initializePlanSelection() {
+    const planRadios = document.querySelectorAll('.plan-radio');
+    planRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                handlePlanSelection(this.id);
+            }
+        });
+    });
 } 
