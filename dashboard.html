@@ -316,7 +316,7 @@
       <div class="modal-container">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h3 class="modal-title">Add Card</h3>
+          <h3 class="modal-title" id="modal-title">Add Card</h3>
           <button class="modal-close-btn" onclick="closeAddCardModal()">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -326,6 +326,51 @@
         
         <!-- Modal Content -->
         <div class="modal-content">
+          <!-- Credit Amount Section (only for Buy Credits mode) -->
+          <div id="credit-amount-section" class="credit-amount-section hidden">
+            <div class="credit-amount-container">
+              <div class="credit-amount-label">Credit Amount</div>
+              <div class="credit-amount-input-container">
+                <input type="number" id="credit-amount" class="form-input credit-amount-input" placeholder="*Amount" min="1" value="1">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add payment method subheader (only for Buy Credits mode) -->
+          <div id="add-payment-subheader" class="add-payment-subheader hidden">
+            <h4>Add payment method</h4>
+          </div>
+          
+          <!-- Payment Method Selection Section (only for Manage Plan mode) -->
+          <div id="payment-method-section" class="payment-method-section hidden">
+            <div class="payment-method-subheader">
+              <h4>Add payment method</h4>
+            </div>
+            <div class="payment-method-cards">
+              <div class="payment-method-card" onclick="selectPaymentMethod('card')">
+                <div class="payment-method-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                  </svg>
+                </div>
+                <div class="payment-method-info">
+                  <span class="payment-method-name">Card</span>
+                </div>
+              </div>
+              <div class="payment-method-card" onclick="selectPaymentMethod('cashapp')">
+                <div class="payment-method-icon">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+                </div>
+                <div class="payment-method-info">
+                  <span class="payment-method-name">Cash App Pay</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <!-- Link Payment Option -->
           <div id="link-payment-option" class="link-payment-option">
             <div class="link-payment-header">
@@ -448,7 +493,7 @@
             <p class="card-terms-text">By providing your card information, you allow byoDrive to charge your card for future payments in accordance with their terms.</p>
             <div class="card-form-actions">
               <button class="btn btn-secondary card-cancel-btn" type="button" onclick="closeAddCardModal()">Cancel</button>
-              <button class="btn btn-primary card-submit-btn" type="button" onclick="validateCardForm()">Submit</button>
+              <button class="btn btn-primary card-submit-btn" type="button" id="card-submit-btn" onclick="validateCardForm()">Submit</button>
             </div>
           </div>
         </div>
@@ -512,6 +557,16 @@
       // Initialize Add Payment Method functionality
       if (typeof initializeAddPaymentMethod === 'function') {
         initializeAddPaymentMethod();
+      }
+      
+      // Initialize Buy Credits functionality
+      if (typeof initializeBuyCredits === 'function') {
+        initializeBuyCredits();
+      }
+      
+      // Initialize Plan Manage buttons
+      if (typeof initializePlanManageButtons === 'function') {
+        initializePlanManageButtons();
       }
     });
   </script>

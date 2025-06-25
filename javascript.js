@@ -28,6 +28,16 @@ function initializeApp() {
     
     // Add intersection observer for animations
     addIntersectionObserver();
+    
+    // Initialize Buy Credits functionality
+    if (typeof initializeBuyCredits === 'function') {
+        initializeBuyCredits();
+    }
+    
+    // Initialize Plan Manage buttons
+    if (typeof initializePlanManageButtons === 'function') {
+        initializePlanManageButtons();
+    }
 }
 
 // Handle scroll events
@@ -505,42 +515,159 @@ function openPrivacyPolicy() {
     window.location.href = 'privacy.html';
 }
 
-// Handle plan radio button selection
+// Handle Plan Selection
 function handlePlanSelection(planId) {
-    // Remove selected class from all manage buttons
-    const manageButtons = document.querySelectorAll('.plan-manage-btn');
-    manageButtons.forEach(btn => btn.classList.remove('selected'));
+    // Remove active class from all plan cards
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach(card => {
+        card.classList.remove('selected');
+    });
     
-    // Add selected class to the corresponding manage button
-    const selectedPlanCard = document.getElementById(planId).closest('.plan-card');
-    const manageButton = selectedPlanCard.querySelector('.plan-manage-btn');
-    if (manageButton) {
-        manageButton.classList.add('selected');
+    // Add active class to selected plan card
+    const selectedCard = document.querySelector(`#${planId}`).closest('.plan-card');
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
     }
 }
 
-// Initialize plan selection functionality
+// Initialize Plan Selection functionality
 function initializePlanSelection() {
     const planRadios = document.querySelectorAll('.plan-radio');
     planRadios.forEach(radio => {
         radio.addEventListener('change', function() {
-            if (this.checked) {
-                handlePlanSelection(this.id);
-            }
+            handlePlanSelection(this.id);
         });
     });
 }
 
-// Handle membership card manage button click
+// Handle Membership Manage button click
 function handleMembershipManage() {
-    switchTab('payments');
+    // For now, just show a simple alert
+    alert('Membership management functionality coming soon!');
 }
 
-// Initialize membership manage button functionality
+// Initialize Membership Manage functionality
 function initializeMembershipManage() {
-    const manageButton = document.querySelector('.membership-card .manage-btn');
-    if (manageButton) {
-        manageButton.addEventListener('click', handleMembershipManage);
+    const manageBtn = document.querySelector('.manage-btn');
+    if (manageBtn) {
+        manageBtn.addEventListener('click', handleMembershipManage);
+    }
+}
+
+// Handle Plan Manage button click
+function handlePlanManage(planName) {
+    // Find the plan card and check if its radio button is selected
+    const planCards = document.querySelectorAll('.plan-card');
+    let selectedPlanCard = null;
+    
+    for (const card of planCards) {
+        const planNameElement = card.querySelector('.plan-name');
+        if (planNameElement && planNameElement.textContent === planName) {
+            selectedPlanCard = card;
+            break;
+        }
+    }
+    
+    if (selectedPlanCard) {
+        const radioButton = selectedPlanCard.querySelector('.plan-radio');
+        if (radioButton && radioButton.checked) {
+            // Radio button is selected, open the modal
+            openManagePlanModal(planName);
+        } else {
+            // Radio button is not selected, show a message
+            showToast('Please select this plan first before managing it.');
+        }
+    }
+}
+
+// Open Manage Plan Modal
+function openManagePlanModal(planName) {
+    const modal = document.getElementById('add-card-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const creditAmountSection = document.getElementById('credit-amount-section');
+    const paymentMethodSection = document.getElementById('payment-method-section');
+    const cardSubmitBtn = document.getElementById('card-submit-btn');
+    
+    if (modal && modalTitle && creditAmountSection && paymentMethodSection && cardSubmitBtn) {
+        // Change modal title and button text
+        modalTitle.textContent = planName;
+        cardSubmitBtn.textContent = 'Subscribe';
+        
+        // Show credit amount section and payment method section
+        creditAmountSection.classList.remove('hidden');
+        paymentMethodSection.classList.remove('hidden');
+        
+        // Hide add payment subheader (used for buy credits mode)
+        const addPaymentSubheader = document.getElementById('add-payment-subheader');
+        if (addPaymentSubheader) {
+            addPaymentSubheader.classList.add('hidden');
+        }
+        
+        // Set modal mode to 'manage-plan'
+        modal.setAttribute('data-mode', 'manage-plan');
+        modal.setAttribute('data-plan-name', planName);
+        
+        // Show modal
+        modal.classList.add('active');
+        
+        // Reset to initial state
+        resetLinkCardForm();
+        resetCreditAmount();
+        resetPaymentMethodSelection();
+    }
+}
+
+// Initialize Plan Manage buttons
+function initializePlanManageButtons() {
+    const planManageBtns = document.querySelectorAll('.plan-manage-btn');
+    planManageBtns.forEach(btn => {
+        // Remove any existing event listeners to prevent duplicates
+        btn.removeEventListener('click', btn.planManageHandler);
+        
+        // Create a new handler function for this specific button
+        btn.planManageHandler = function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
+            
+            const planCard = this.closest('.plan-card');
+            const planName = planCard.querySelector('.plan-name').textContent;
+            handlePlanManage(planName);
+        };
+        
+        // Add the event listener
+        btn.addEventListener('click', btn.planManageHandler);
+    });
+}
+
+// Select Payment Method
+function selectPaymentMethod(method) {
+    // Remove selected class from all payment method cards
+    const paymentCards = document.querySelectorAll('.payment-method-card');
+    paymentCards.forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked card
+    const selectedCard = event.currentTarget;
+    selectedCard.classList.add('selected');
+    
+    // Store selected payment method
+    const modal = document.getElementById('add-card-modal');
+    if (modal) {
+        modal.setAttribute('data-payment-method', method);
+    }
+}
+
+// Reset Payment Method Selection
+function resetPaymentMethodSelection() {
+    const paymentCards = document.querySelectorAll('.payment-method-card');
+    paymentCards.forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    const modal = document.getElementById('add-card-modal');
+    if (modal) {
+        modal.removeAttribute('data-payment-method');
     }
 }
 
@@ -562,10 +689,31 @@ function openAddCardModal() {
 // Close Add Card Modal
 function closeAddCardModal() {
     const modal = document.getElementById('add-card-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const creditAmountSection = document.getElementById('credit-amount-section');
+    const addPaymentSubheader = document.getElementById('add-payment-subheader');
+    const paymentMethodSection = document.getElementById('payment-method-section');
+    const cardSubmitBtn = document.getElementById('card-submit-btn');
+    
     if (modal) {
         modal.classList.remove('active');
+        
+        // Reset modal to "Add Card" mode
+        if (modalTitle) modalTitle.textContent = 'Add Card';
+        if (cardSubmitBtn) cardSubmitBtn.textContent = 'Submit';
+        if (creditAmountSection) creditAmountSection.classList.add('hidden');
+        if (addPaymentSubheader) addPaymentSubheader.classList.add('hidden');
+        if (paymentMethodSection) paymentMethodSection.classList.add('hidden');
+        
+        // Remove modal mode and related attributes
+        modal.removeAttribute('data-mode');
+        modal.removeAttribute('data-plan-name');
+        modal.removeAttribute('data-payment-method');
+        
         // Reset to initial state
         resetLinkCardForm();
+        resetCreditAmount();
+        resetPaymentMethodSelection();
     }
 }
 
@@ -626,8 +774,256 @@ function initializeAddPaymentMethod() {
     }
 }
 
-// Validate Card Form
+// Handle Buy Credits button click
+function handleBuyCredits() {
+    openBuyCreditsModal();
+}
+
+// Open Buy Credits Modal
+function openBuyCreditsModal() {
+    const modal = document.getElementById('add-card-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const creditAmountSection = document.getElementById('credit-amount-section');
+    const addPaymentSubheader = document.getElementById('add-payment-subheader');
+    const paymentMethodSection = document.getElementById('payment-method-section');
+    const cardSubmitBtn = document.getElementById('card-submit-btn');
+    
+    if (modal && modalTitle && creditAmountSection && addPaymentSubheader && paymentMethodSection && cardSubmitBtn) {
+        // Change modal title and button text
+        modalTitle.textContent = 'Buy Credits';
+        cardSubmitBtn.textContent = 'Pay';
+        
+        // Show credit amount section and add payment subheader
+        creditAmountSection.classList.remove('hidden');
+        addPaymentSubheader.classList.remove('hidden');
+        
+        // Hide payment method section (used for manage plan mode)
+        paymentMethodSection.classList.add('hidden');
+        
+        // Set modal mode to 'buy-credits'
+        modal.setAttribute('data-mode', 'buy-credits');
+        
+        // Show modal
+        modal.classList.add('active');
+        
+        // Reset to initial state
+        resetLinkCardForm();
+        resetCreditAmount();
+        resetPaymentMethodSelection();
+    }
+}
+
+// Initialize Buy Credits functionality
+function initializeBuyCredits() {
+    const buyCreditsBtn = document.querySelector('.plan-buy-btn');
+    if (buyCreditsBtn) {
+        buyCreditsBtn.addEventListener('click', handleBuyCredits);
+    }
+    
+    // Add event listener for credit amount input
+    const creditInput = document.getElementById('credit-amount');
+    if (creditInput) {
+        creditInput.addEventListener('input', updateCreditControls);
+        creditInput.addEventListener('change', function() {
+            const value = parseInt(this.value) || 1;
+            if (value < 1) {
+                this.value = 1;
+            }
+            updateCreditControls();
+        });
+    }
+}
+
+// Increment credit amount
+function incrementCredit() {
+    const creditInput = document.getElementById('credit-amount');
+    if (creditInput) {
+        const currentValue = parseInt(creditInput.value) || 1;
+        creditInput.value = currentValue + 1;
+        updateCreditControls();
+    }
+}
+
+// Decrement credit amount
+function decrementCredit() {
+    const creditInput = document.getElementById('credit-amount');
+    if (creditInput) {
+        const currentValue = parseInt(creditInput.value) || 1;
+        if (currentValue > 1) {
+            creditInput.value = currentValue - 1;
+            updateCreditControls();
+        }
+    }
+}
+
+// Update credit control buttons state
+function updateCreditControls() {
+    const creditInput = document.getElementById('credit-amount');
+    const decrementBtn = document.querySelector('.credit-control-btn:first-child');
+    
+    if (creditInput && decrementBtn) {
+        const currentValue = parseInt(creditInput.value) || 1;
+        decrementBtn.disabled = currentValue <= 1;
+    }
+}
+
+// Reset credit amount to default
+function resetCreditAmount() {
+    const creditInput = document.getElementById('credit-amount');
+    if (creditInput) {
+        creditInput.value = 1;
+        updateCreditControls();
+    }
+}
+
+// Modified validateCardForm to handle all modes
 function validateCardForm() {
+    const modal = document.getElementById('add-card-modal');
+    const modalMode = modal ? modal.getAttribute('data-mode') : null;
+    
+    if (modalMode === 'buy-credits') {
+        return validateBuyCreditsForm();
+    } else if (modalMode === 'manage-plan') {
+        return validateManagePlanForm();
+    } else {
+        return validateAddCardForm();
+    }
+}
+
+// Validate Buy Credits form
+function validateBuyCreditsForm() {
+    let isValid = true;
+    
+    // Clear previous errors
+    clearCardFormErrors();
+    
+    // Validate credit amount
+    const creditAmount = document.getElementById('credit-amount').value.trim();
+    if (!creditAmount || parseInt(creditAmount) < 1) {
+        showToast('Please enter a valid credit amount.');
+        isValid = false;
+    }
+    
+    // Validate card number
+    const cardNumber = document.getElementById('card-number').value.trim();
+    if (!cardNumber || cardNumber.length < 16) {
+        showFieldError('card-number', 'Your card number is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate expiry date
+    const expiryDate = document.getElementById('expiry-date').value.trim();
+    if (!expiryDate || !isValidExpiryDate(expiryDate)) {
+        showFieldError('expiry-date', 'Your card\'s expiry date is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate security code
+    const cvc = document.getElementById('cvc').value.trim();
+    if (!cvc || cvc.length < 3) {
+        showFieldError('cvc', 'Your card\'s security code is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate ZIP code
+    const zip = document.getElementById('zip').value.trim();
+    if (!zip || zip.length < 5) {
+        showFieldError('zip', 'Your ZIP is invalid.');
+        isValid = false;
+    }
+    
+    if (isValid) {
+        // Simulate payment processing
+        const creditAmount = document.getElementById('credit-amount').value;
+        showToast(`Processing payment for ${creditAmount} credits...`);
+        
+        // Close modal after successful validation
+        setTimeout(() => {
+            closeAddCardModal();
+            showToast('Payment successful! Credits have been added to your account.');
+        }, 2000);
+    } else {
+        showToast('Please fix the errors above.');
+    }
+    
+    return isValid;
+}
+
+// Validate Manage Plan form
+function validateManagePlanForm() {
+    let isValid = true;
+    
+    // Clear previous errors
+    clearCardFormErrors();
+    
+    // Validate credit amount
+    const creditAmount = document.getElementById('credit-amount').value.trim();
+    if (!creditAmount || parseInt(creditAmount) < 1) {
+        showToast('Please enter a valid credit amount.');
+        isValid = false;
+    }
+    
+    // Validate payment method selection
+    const modal = document.getElementById('add-card-modal');
+    const selectedPaymentMethod = modal ? modal.getAttribute('data-payment-method') : null;
+    if (!selectedPaymentMethod) {
+        showToast('Please select a payment method.');
+        isValid = false;
+    }
+    
+    // If card is selected, validate card details
+    if (selectedPaymentMethod === 'card') {
+        // Validate card number
+        const cardNumber = document.getElementById('card-number').value.trim();
+        if (!cardNumber || cardNumber.length < 16) {
+            showFieldError('card-number', 'Your card number is incomplete.');
+            isValid = false;
+        }
+        
+        // Validate expiry date
+        const expiryDate = document.getElementById('expiry-date').value.trim();
+        if (!expiryDate || !isValidExpiryDate(expiryDate)) {
+            showFieldError('expiry-date', 'Your card\'s expiry date is incomplete.');
+            isValid = false;
+        }
+        
+        // Validate security code
+        const cvc = document.getElementById('cvc').value.trim();
+        if (!cvc || cvc.length < 3) {
+            showFieldError('cvc', 'Your card\'s security code is incomplete.');
+            isValid = false;
+        }
+        
+        // Validate ZIP code
+        const zip = document.getElementById('zip').value.trim();
+        if (!zip || zip.length < 5) {
+            showFieldError('zip', 'Your ZIP is invalid.');
+            isValid = false;
+        }
+    }
+    
+    if (isValid) {
+        // Simulate subscription processing
+        const planName = modal ? modal.getAttribute('data-plan-name') : '';
+        const creditAmount = document.getElementById('credit-amount').value;
+        const paymentMethod = selectedPaymentMethod === 'card' ? 'Card' : 'Cash App Pay';
+        
+        showToast(`Processing subscription to ${planName} with ${creditAmount} credits via ${paymentMethod}...`);
+        
+        // Close modal after successful validation
+        setTimeout(() => {
+            closeAddCardModal();
+            showToast('Subscription successful! Your plan has been activated.');
+        }, 2000);
+    } else {
+        showToast('Please fix the errors above.');
+    }
+    
+    return isValid;
+}
+
+// Validate Add Card form (original function renamed)
+function validateAddCardForm() {
     let isValid = true;
     
     // Clear previous errors
@@ -664,6 +1060,9 @@ function validateCardForm() {
     // Show toast with first error
     if (!isValid) {
         showToast('Your card number is incomplete.');
+    } else {
+        showToast('Card added successfully!');
+        closeAddCardModal();
     }
     
     return isValid;
@@ -726,6 +1125,12 @@ function isValidExpiryDate(date) {
 function showToast(message) {
     const toastContainer = document.getElementById('toast-container');
     if (!toastContainer) return;
+    
+    // Clear existing toasts first
+    const existingToasts = toastContainer.querySelectorAll('.toast');
+    existingToasts.forEach(toast => {
+        toast.remove();
+    });
     
     const toast = document.createElement('div');
     toast.className = 'toast';
