@@ -339,13 +339,12 @@ body {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 .section-title {
   font-size: 1.875rem;
   font-weight: 700;
-  margin-bottom: 1rem;
 }
 
 .section-subtitle {
@@ -1356,7 +1355,6 @@ input:focus, textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
 .plan-card {
@@ -1529,5 +1527,66 @@ input:focus, textarea:focus {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+}
+
+/* Settings Section Styles */
+.settings-container {
+  margin-top: 2rem;
+}
+
+.settings-section {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.settings-table-container {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+}
+
+.settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(31, 41, 55, 0.6);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.settings-table th {
+  background: rgba(55, 65, 81, 0.8);
+  color: #9ca3af;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.settings-table td {
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.settings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.settings-table tbody tr:hover {
+  background: rgba(192, 132, 252, 0.05);
+}
+
+/* Responsive design for settings */
+@media (max-width: 768px) {
+  .settings-table th,
+  .settings-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
   }
 } 
