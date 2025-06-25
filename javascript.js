@@ -470,6 +470,16 @@ function switchTab(tabName) {
         activeContent.classList.add('active');
     }
     
+    // Handle membership card manage button visibility
+    const manageButton = document.querySelector('.membership-card .manage-btn');
+    if (manageButton) {
+        if (tabName === 'payments' || tabName === 'settings') {
+            manageButton.style.display = 'none';
+        } else {
+            manageButton.style.display = 'inline-flex';
+        }
+    }
+    
     console.log('Switched to tab:', tabName);
 }
 
@@ -519,4 +529,17 @@ function initializePlanSelection() {
             }
         });
     });
+}
+
+// Handle membership card manage button click
+function handleMembershipManage() {
+    switchTab('payments');
+}
+
+// Initialize membership manage button functionality
+function initializeMembershipManage() {
+    const manageButton = document.querySelector('.membership-card .manage-btn');
+    if (manageButton) {
+        manageButton.addEventListener('click', handleMembershipManage);
+    }
 } 
