@@ -405,12 +405,14 @@
                   </svg>
                 </div>
               </div>
+              <div class="error-message" id="card-number-error"></div>
             </div>
             <!-- 2x2 Grid Inputs -->
             <div class="card-details-grid">
               <div class="form-group">
                 <label for="expiry-date" class="form-label">Expiry date</label>
                 <input type="text" id="expiry-date" class="form-input" placeholder="MM / YY" maxlength="7">
+                <div class="error-message" id="expiry-date-error"></div>
               </div>
               <div class="form-group">
                 <label for="cvc" class="form-label">Security code</label>
@@ -421,6 +423,7 @@
                     <circle cx="18" cy="8" r="2" fill="#D1D5DB"/>
                   </svg>
                 </div>
+                <div class="error-message" id="cvc-error"></div>
               </div>
               <div class="form-group">
                 <label for="country" class="form-label">Country</label>
@@ -438,18 +441,22 @@
               <div class="form-group">
                 <label for="zip" class="form-label">ZIP code</label>
                 <input type="text" id="zip" class="form-input" placeholder="ZIP code" maxlength="5" pattern="[0-9]*" inputmode="numeric">
+                <div class="error-message" id="zip-error"></div>
               </div>
             </div>
             <!-- Terms Paragraph and Action Buttons -->
             <p class="card-terms-text">By providing your card information, you allow byoDrive to charge your card for future payments in accordance with their terms.</p>
             <div class="card-form-actions">
               <button class="btn btn-secondary card-cancel-btn" type="button" onclick="closeAddCardModal()">Cancel</button>
-              <button class="btn btn-primary card-submit-btn" type="submit">Submit</button>
+              <button class="btn btn-primary card-submit-btn" type="button" onclick="validateCardForm()">Submit</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- Footer -->
     <footer class="footer">

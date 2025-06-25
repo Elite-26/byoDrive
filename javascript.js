@@ -624,4 +624,122 @@ function initializeAddPaymentMethod() {
     if (linkPaymentOption) {
         linkPaymentOption.addEventListener('click', showLinkCardForm);
     }
+}
+
+// Validate Card Form
+function validateCardForm() {
+    let isValid = true;
+    
+    // Clear previous errors
+    clearCardFormErrors();
+    
+    // Validate card number
+    const cardNumber = document.getElementById('card-number').value.trim();
+    if (!cardNumber || cardNumber.length < 16) {
+        showFieldError('card-number', 'Your card number is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate expiry date
+    const expiryDate = document.getElementById('expiry-date').value.trim();
+    if (!expiryDate || !isValidExpiryDate(expiryDate)) {
+        showFieldError('expiry-date', 'Your card\'s expiry date is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate security code
+    const cvc = document.getElementById('cvc').value.trim();
+    if (!cvc || cvc.length < 3) {
+        showFieldError('cvc', 'Your card\'s security code is incomplete.');
+        isValid = false;
+    }
+    
+    // Validate ZIP code
+    const zip = document.getElementById('zip').value.trim();
+    if (!zip || zip.length < 5) {
+        showFieldError('zip', 'Your ZIP is invalid.');
+        isValid = false;
+    }
+    
+    // Show toast with first error
+    if (!isValid) {
+        showToast('Your card number is incomplete.');
+    }
+    
+    return isValid;
+}
+
+// Show field error
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(fieldId + '-error');
+    
+    if (field) {
+        field.classList.add('error');
+    }
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
+    }
+}
+
+// Clear all card form errors
+function clearCardFormErrors() {
+    const fields = ['card-number', 'expiry-date', 'cvc', 'zip'];
+    
+    fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        const errorElement = document.getElementById(fieldId + '-error');
+        
+        if (field) {
+            field.classList.remove('error');
+        }
+        
+        if (errorElement) {
+            errorElement.classList.remove('show');
+            errorElement.textContent = '';
+        }
+    });
+}
+
+// Validate expiry date format (MM/YY)
+function isValidExpiryDate(date) {
+    const regex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    if (!regex.test(date)) return false;
+    
+    const [month, year] = date.split('/');
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear() % 100;
+    const currentMonth = currentDate.getMonth() + 1;
+    
+    const expYear = parseInt(year);
+    const expMonth = parseInt(month);
+    
+    if (expYear < currentYear) return false;
+    if (expYear === currentYear && expMonth < currentMonth) return false;
+    
+    return true;
+}
+
+// Show toast notification
+function showToast(message) {
+    const toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) return;
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    
+    toastContainer.appendChild(toast);
+    
+    // Remove toast after 4 seconds
+    setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }, 4000);
 } 
