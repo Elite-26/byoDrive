@@ -85,7 +85,7 @@
               <div class="membership-type">Free Membership</div>
               <div class="membership-status inactive">Inactive</div>
             </div>
-            <div class="membership-content">
+            <div>
               <div class="membership-info">
                 <h3 class="membership-title">Current Plan</h3>
                 <p class="membership-description">
@@ -355,6 +355,11 @@
       // Initialize plan selection functionality
       if (typeof initializePlanSelection === 'function') {
         initializePlanSelection();
+      }
+      
+      // Initialize membership manage button functionality
+      if (typeof initializeMembershipManage === 'function') {
+        initializeMembershipManage();
       }
     });
   </script>

@@ -1144,9 +1144,6 @@ input:focus, textarea:focus {
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.membership-content {
-  margin-bottom: 2rem;
-}
 
 .membership-info {
   text-align: center;
@@ -1169,6 +1166,7 @@ input:focus, textarea:focus {
 .membership-footer {
   display: flex;
   justify-content: flex-start;
+  margin-top: 1.5rem;
 }
 
 .manage-btn {
