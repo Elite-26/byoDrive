@@ -1242,4 +1242,327 @@ function initializeCreateAlbum() {
             }
         });
     }
+}
+
+// Album Settings Functions
+function openAlbumSettings(albumTitle) {
+  // Show the settings view (this will replace the current content)
+  showAlbumSettingsView(albumTitle);
+}
+
+function showAlbumSettingsView(albumTitle) {
+  const albumsContent = document.getElementById('albums-content');
+  
+  // Create settings view HTML
+  const settingsHTML = `
+    <div class="album-settings-view">
+      <div class="album-settings-header">
+        <h3 class="album-settings-title">${albumTitle}</h3>
+        <button class="btn btn-primary edit-title-btn" onclick="editAlbumTitle('${albumTitle}')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 8px;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+          </svg>
+          Edit Title
+        </button>
+      </div>
+      
+      <div class="album-settings-content">
+        <div class="album-settings-section">
+          <div class="album-settings-item">
+            <span class="album-settings-label">Date: ${getAlbumCreatedDate(albumTitle)}</span>
+          </div>
+        </div>
+        
+        <div class="album-settings-section">
+          <h4 class="album-settings-subtitle">Visibility</h4>
+          <div class="album-settings-options">
+            <label class="radio-option">
+              <input type="radio" name="visibility-${albumTitle.replace(/\s+/g, '-')}" value="public" ${getAlbumVisibility(albumTitle) === 'public' ? 'checked' : ''}>
+              <span class="radio-label">Public</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="visibility-${albumTitle.replace(/\s+/g, '-')}" value="private" ${getAlbumVisibility(albumTitle) === 'private' ? 'checked' : ''}>
+              <span class="radio-label">Private</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="album-settings-section">
+          <h4 class="album-settings-subtitle">Permissions</h4>
+          
+          <div class="permissions-subsection">
+            <h5 class="permissions-subtitle">Anonymous</h5>
+            <div class="album-settings-options">
+              <label class="radio-option">
+                <input type="radio" name="anonymous-${albumTitle.replace(/\s+/g, '-')}" value="not-available" ${getAlbumAnonymousPermission(albumTitle) === 'not-available' ? 'checked' : ''}>
+                <span class="radio-label">Not available</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="anonymous-${albumTitle.replace(/\s+/g, '-')}" value="can-contribute-view" ${getAlbumAnonymousPermission(albumTitle) === 'can-contribute-view' ? 'checked' : ''}>
+                <span class="radio-label">Can contribute + view</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="anonymous-${albumTitle.replace(/\s+/g, '-')}" value="view-only" ${getAlbumAnonymousPermission(albumTitle) === 'view-only' ? 'checked' : ''}>
+                <span class="radio-label">View only</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="permissions-subsection">
+            <h5 class="permissions-subtitle">Small Group</h5>
+            <div class="album-settings-options">
+              <label class="radio-option">
+                <input type="radio" name="small-group-${albumTitle.replace(/\s+/g, '-')}" value="not-available" ${getAlbumSmallGroupPermission(albumTitle) === 'not-available' ? 'checked' : ''}>
+                <span class="radio-label">Not available</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="small-group-${albumTitle.replace(/\s+/g, '-')}" value="can-contribute-view" ${getAlbumSmallGroupPermission(albumTitle) === 'can-contribute-view' ? 'checked' : ''}>
+                <span class="radio-label">Can contribute + view</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="small-group-${albumTitle.replace(/\s+/g, '-')}" value="view-only" ${getAlbumSmallGroupPermission(albumTitle) === 'view-only' ? 'checked' : ''}>
+                <span class="radio-label">View only</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="permissions-subsection">
+            <h5 class="permissions-subtitle">Members of Small Group</h5>
+            <div class="members-table">
+              <div class="member-row">
+                <span class="member-name">john.doe@example.com</span>
+                <span class="member-role">Admin</span>
+                <button class="btn btn-danger btn-sm member-remove-btn">Remove</button>
+              </div>
+              <div class="member-row">
+                <span class="member-name">jane.smith@example.com</span>
+                <span class="member-role">Member</span>
+                <button class="btn btn-danger btn-sm member-remove-btn">Remove</button>
+              </div>
+            </div>
+            <button class="btn btn-primary add-member-btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 8px;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              Add New Member
+            </button>
+          </div>
+        </div>
+        
+        <div class="album-settings-section">
+          <h4 class="album-settings-subtitle">Email notifications</h4>
+          <div class="album-settings-options">
+            <label class="radio-option">
+              <input type="radio" name="email-${albumTitle.replace(/\s+/g, '-')}" value="subscribe" ${getAlbumEmailNotifications(albumTitle) === 'subscribe' ? 'checked' : ''}>
+              <span class="radio-label">Subscribe</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="email-${albumTitle.replace(/\s+/g, '-')}" value="unsubscribe" ${getAlbumEmailNotifications(albumTitle) === 'unsubscribe' ? 'checked' : ''}>
+              <span class="radio-label">Unsubscribe</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="album-settings-actions">
+          <button class="btn btn-secondary" onclick="closeAlbumSettings()">Back to Albums</button>
+          <button class="btn btn-primary" onclick="saveAlbumSettings('${albumTitle}')">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Replace the content instead of appending
+  albumsContent.innerHTML = settingsHTML;
+}
+
+function closeAlbumSettings() {
+  const albumsContent = document.getElementById('albums-content');
+  
+  // Restore the original albums content
+  albumsContent.innerHTML = `
+    <div class="albums-header">
+      <button class="btn btn-primary create-album-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        Create Album
+      </button>
+    </div>
+    
+    <div class="albums-table-container">
+      <table class="albums-table">
+        <thead>
+          <tr>
+            <th>Album Title</th>
+            <th>Setting</th>
+            <th>Open</th>
+            <th>Slideshow page</th>
+            <th>Re-instate</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Summer Vacation 2024</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Summer Vacation 2024')">Settings</button>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm">Open</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">View</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">Re-instate</button>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Family Photos</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Family Photos')">Settings</button>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm">Open</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">View</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">Re-instate</button>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Work Portfolio</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Work Portfolio')">Settings</button>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm">Open</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">View</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm">Re-instate</button>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function editAlbumTitle(currentTitle) {
+  const newTitle = prompt('Enter new album title:', currentTitle);
+  if (newTitle && newTitle.trim() !== '' && newTitle !== currentTitle) {
+    // Update the title in the settings view
+    const titleElement = document.querySelector('.album-settings-title');
+    if (titleElement) {
+      titleElement.textContent = newTitle;
+    }
+    
+    // Update the title in the table
+    updateAlbumTitleInTable(currentTitle, newTitle);
+    
+    // Show success message
+    showToast('Album title updated successfully!');
+  }
+}
+
+function updateAlbumTitleInTable(oldTitle, newTitle) {
+  // Find and update the album title in the table
+  const tableRows = document.querySelectorAll('.albums-table tbody tr');
+  tableRows.forEach(row => {
+    const titleCell = row.querySelector('td:first-child');
+    if (titleCell && titleCell.textContent === oldTitle) {
+      titleCell.textContent = newTitle;
+    }
+  });
+}
+
+function saveAlbumSettings(albumTitle) {
+  // Get the selected values
+  const visibility = document.querySelector(`input[name="visibility-${albumTitle.replace(/\s+/g, '-')}"]:checked`)?.value;
+  const emailNotifications = document.querySelector(`input[name="email-${albumTitle.replace(/\s+/g, '-')}"]:checked`)?.value;
+  const anonymousPermission = document.querySelector(`input[name="anonymous-${albumTitle.replace(/\s+/g, '-')}"]:checked`)?.value;
+  const smallGroupPermission = document.querySelector(`input[name="small-group-${albumTitle.replace(/\s+/g, '-')}"]:checked`)?.value;
+  
+  // Save the settings (in a real app, this would be sent to the server)
+  saveAlbumSettingsToStorage(albumTitle, visibility, emailNotifications, anonymousPermission, smallGroupPermission);
+  
+  // Show success message
+  showToast('Album settings saved successfully!');
+  
+  // Close settings and return to albums view
+  closeAlbumSettings();
+}
+
+function getAlbumCreatedDate(albumTitle) {
+  // In a real app, this would come from the server
+  // For now, return a mock date
+  const dates = {
+    'Summer Vacation 2024': '2024-06-15',
+    'Family Photos': '2024-05-20',
+    'Work Portfolio': '2024-04-10'
+  };
+  return dates[albumTitle] || '2024-01-01';
+}
+
+function getAlbumVisibility(albumTitle) {
+  // In a real app, this would come from the server
+  // For now, return a default value
+  return 'public';
+}
+
+function getAlbumEmailNotifications(albumTitle) {
+  // In a real app, this would come from the server
+  // For now, return a default value
+  return 'subscribe';
+}
+
+function getAlbumAnonymousPermission(albumTitle) {
+  // In a real app, this would come from the server
+  // For now, return a default value
+  return 'not-available';
+}
+
+function getAlbumSmallGroupPermission(albumTitle) {
+  // In a real app, this would come from the server
+  // For now, return a default value
+  return 'view-only';
+}
+
+function saveAlbumSettingsToStorage(albumTitle, visibility, emailNotifications, anonymousPermission, smallGroupPermission) {
+  // In a real app, this would be sent to the server
+  // For now, just log the values
+  console.log('Saving settings for album:', albumTitle, {
+    visibility,
+    emailNotifications,
+    anonymousPermission,
+    smallGroupPermission
+  });
+}
+
+// Initialize album settings functionality
+function initializeAlbumSettings() {
+  // Add click event listeners to all settings buttons
+  const settingsButtons = document.querySelectorAll('.albums-table .btn-secondary');
+  settingsButtons.forEach(button => {
+    if (button.textContent === 'Settings') {
+      button.addEventListener('click', function() {
+        const albumTitle = this.closest('tr').querySelector('td:first-child').textContent;
+        openAlbumSettings(albumTitle);
+      });
+    }
+  });
 } 
