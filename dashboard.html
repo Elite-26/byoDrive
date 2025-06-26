@@ -500,6 +500,37 @@
       </div>
     </div>
 
+    <!-- Create Album Modal -->
+    <div id="create-album-modal" class="modal-overlay">
+      <div class="modal-container create-album-modal">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Create New Album</h3>
+          <button class="modal-close-btn" onclick="closeCreateAlbumModal()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Modal Content -->
+        <div class="modal-content">
+          <div class="create-album-form">
+            <div class="form-group">
+              <label for="album-title" class="form-label">Album Title</label>
+              <input type="text" id="album-title" class="form-input" placeholder="Enter album title">
+              <div class="error-message" id="album-title-error"></div>
+            </div>
+            
+            <div class="create-album-actions">
+              <button class="btn btn-secondary" onclick="closeCreateAlbumModal()">Cancel</button>
+              <button class="btn btn-primary" onclick="createAlbum()">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Toast Container -->
     <div id="toast-container" class="toast-container"></div>
 
@@ -567,6 +598,11 @@
       // Initialize Plan Manage buttons
       if (typeof initializePlanManageButtons === 'function') {
         initializePlanManageButtons();
+      }
+      
+      // Initialize Create Album functionality
+      if (typeof initializeCreateAlbum === 'function') {
+        initializeCreateAlbum();
       }
     });
   </script>

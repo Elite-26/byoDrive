@@ -1126,19 +1126,18 @@ function showToast(message) {
     const toastContainer = document.getElementById('toast-container');
     if (!toastContainer) return;
     
-    // Clear existing toasts first
-    const existingToasts = toastContainer.querySelectorAll('.toast');
-    existingToasts.forEach(toast => {
-        toast.remove();
-    });
-    
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
     
     toastContainer.appendChild(toast);
     
-    // Remove toast after 4 seconds
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
+    
+    // Remove toast after 3 seconds
     setTimeout(() => {
         toast.classList.add('hide');
         setTimeout(() => {
@@ -1146,5 +1145,101 @@ function showToast(message) {
                 toast.parentNode.removeChild(toast);
             }
         }, 300);
-    }, 4000);
+    }, 3000);
+}
+
+// Create Album Modal Functions
+function openCreateAlbumModal() {
+    const modal = document.getElementById('create-album-modal');
+    if (modal) {
+        modal.classList.add('active');
+        // Focus on the input field
+        const albumTitleInput = document.getElementById('album-title');
+        if (albumTitleInput) {
+            albumTitleInput.focus();
+        }
+    }
+}
+
+function closeCreateAlbumModal() {
+    const modal = document.getElementById('create-album-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        // Clear the form
+        const albumTitleInput = document.getElementById('album-title');
+        if (albumTitleInput) {
+            albumTitleInput.value = '';
+        }
+        // Clear any error messages
+        const errorElement = document.getElementById('album-title-error');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.classList.remove('show');
+        }
+    }
+}
+
+function createAlbum() {
+    const albumTitleInput = document.getElementById('album-title');
+    const albumTitle = albumTitleInput ? albumTitleInput.value.trim() : '';
+    const errorElement = document.getElementById('album-title-error');
+    
+    // Validate album title
+    if (!albumTitle) {
+        if (errorElement) {
+            errorElement.textContent = 'Album title is required';
+            errorElement.classList.add('show');
+        }
+        return;
+    }
+    
+    if (albumTitle.length < 3) {
+        if (errorElement) {
+            errorElement.textContent = 'Album title must be at least 3 characters long';
+            errorElement.classList.add('show');
+        }
+        return;
+    }
+    
+    // Clear any previous errors
+    if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.classList.remove('show');
+    }
+    
+    // Here you would typically make an API call to create the album
+    // For now, we'll just show a success message and close the modal
+    showToast(`Album "${albumTitle}" created successfully!`);
+    closeCreateAlbumModal();
+    
+    // You could also add the new album to the table here
+    // addAlbumToTable(albumTitle);
+}
+
+// Initialize Create Album functionality
+function initializeCreateAlbum() {
+    const createAlbumBtn = document.querySelector('.create-album-btn');
+    if (createAlbumBtn) {
+        createAlbumBtn.addEventListener('click', openCreateAlbumModal);
+    }
+    
+    // Close modal when clicking outside
+    const modal = document.getElementById('create-album-modal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeCreateAlbumModal();
+            }
+        });
+    }
+    
+    // Handle Enter key in album title input
+    const albumTitleInput = document.getElementById('album-title');
+    if (albumTitleInput) {
+        albumTitleInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                createAlbum();
+            }
+        });
+    }
 } 

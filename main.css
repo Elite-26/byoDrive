@@ -1658,7 +1658,7 @@ input:focus, textarea:focus {
 }
 
 .modal-content {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 /* Link Payment Option */
@@ -2102,10 +2102,7 @@ input:focus, textarea:focus {
 }
 
 .credit-amount-label {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #ffffff;
-  flex-shrink: 0;
+  font-size: 0.875rem;
 }
 
 .credit-amount-input-container {
@@ -2281,5 +2278,99 @@ input:focus, textarea:focus {
   
   .credit-amount-label {
     text-align: center;
+  }
+}
+
+/* Create Album Modal Styles */
+.create-album-modal {
+  max-width: 500px;
+  width: 90%;
+}
+
+.create-album-form {
+  padding: 1rem 0;
+}
+
+.create-album-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.create-album-form .form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.create-album-form .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  background-color: #1f2937;
+  color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.create-album-form .form-input:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.1);
+}
+
+.create-album-form .form-input::placeholder {
+  color: #9ca3af;
+}
+
+.create-album-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.create-album-actions .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.create-album-actions .btn-secondary {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.create-album-actions .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.create-album-actions .btn-primary {
+  background: linear-gradient(135deg, #c084fc, #60a5fa);
+  color: #ffffff;
+}
+
+.create-album-actions .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 132, 252, 0.3);
+}
+
+@media (max-width: 640px) {
+  .create-album-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+  
+  .create-album-actions {
+    flex-direction: column;
+  }
+  
+  .create-album-actions .btn {
+    width: 100%;
   }
 } 
