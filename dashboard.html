@@ -147,7 +147,7 @@
                     <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Summer Vacation 2024')">Re-instate</button>
                   </td>
                   <td>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Summer Vacation 2024')">Delete</button>
                   </td>
                 </tr>
                 <tr>
@@ -165,7 +165,7 @@
                     <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Family Photos')">Re-instate</button>
                   </td>
                   <td>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Family Photos')">Delete</button>
                   </td>
                 </tr>
                 <tr>
@@ -183,7 +183,7 @@
                     <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Work Portfolio')">Re-instate</button>
                   </td>
                   <td>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Work Portfolio')">Delete</button>
                   </td>
                 </tr>
               </tbody>
@@ -525,6 +525,35 @@
             <div class="create-album-actions">
               <button class="btn btn-secondary" onclick="closeCreateAlbumModal()">Cancel</button>
               <button class="btn btn-primary" onclick="createAlbum()">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-confirmation-modal" class="modal-overlay">
+      <div class="modal-container delete-confirmation-modal">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Confirmation</h3>
+          <button class="modal-close-btn" onclick="closeDeleteConfirmationModal()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Modal Content -->
+        <div class="modal-content">
+          <div class="delete-confirmation-content">
+            <p class="delete-confirmation-message" id="delete-confirmation-message">
+              Are you sure you want to delete <span id="delete-album-title">Summer Vacation 2024</span>?
+            </p>
+            
+            <div class="delete-confirmation-actions">
+              <button class="btn btn-secondary" onclick="closeDeleteConfirmationModal()">Cancel</button>
+              <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
             </div>
           </div>
         </div>

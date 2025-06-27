@@ -1417,7 +1417,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Summer Vacation 2024')">Re-instate</button>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm">Delete</button>
+              <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Summer Vacation 2024')">Delete</button>
             </td>
           </tr>
           <tr>
@@ -1435,7 +1435,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Family Photos')">Re-instate</button>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm">Delete</button>
+              <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Family Photos')">Delete</button>
             </td>
           </tr>
           <tr>
@@ -1453,7 +1453,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Work Portfolio')">Re-instate</button>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm">Delete</button>
+              <button class="btn btn-danger btn-sm" onclick="openDeleteConfirmationModal('Work Portfolio')">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -1642,4 +1642,40 @@ function reinstateAll(albumTitle) {
   
   // Close re-instate section and return to albums view
   closeReinstateSection();
+}
+
+// Delete Confirmation Modal Functions
+let currentDeleteAlbum = '';
+
+function openDeleteConfirmationModal(albumTitle) {
+  currentDeleteAlbum = albumTitle;
+  
+  // Update the modal content with the album title
+  document.getElementById('delete-album-title').textContent = albumTitle;
+  
+  // Show the modal
+  const modal = document.getElementById('delete-confirmation-modal');
+  modal.classList.add('active');
+}
+
+function closeDeleteConfirmationModal() {
+  // Hide the modal
+  const modal = document.getElementById('delete-confirmation-modal');
+  modal.classList.remove('active');
+  
+  // Reset the current delete album
+  currentDeleteAlbum = '';
+}
+
+function confirmDelete() {
+  if (currentDeleteAlbum) {
+    // Show success message
+    showToast(`"${currentDeleteAlbum}" has been deleted successfully!`);
+    
+    // Close the modal
+    closeDeleteConfirmationModal();
+    
+    // In a real app, you would send a delete request to the server here
+    console.log('Deleting album:', currentDeleteAlbum);
+  }
 } 
