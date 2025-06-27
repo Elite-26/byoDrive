@@ -2842,4 +2842,55 @@ input:focus, textarea:focus {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* Delete Confirmation Modal Styles */
+.delete-confirmation-modal {
+  max-width: 500px;
+}
+
+.delete-confirmation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.delete-confirmation-message {
+  font-size: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+.delete-confirmation-message span {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.delete-confirmation-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.delete-confirmation-actions .btn {
+  min-width: 80px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .delete-confirmation-modal {
+    max-width: 90%;
+    margin: 1rem;
+  }
+  
+  .delete-confirmation-actions {
+    flex-direction: column;
+  }
+  
+  .delete-confirmation-actions .btn {
+    width: 100%;
+  }
 } 
