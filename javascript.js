@@ -1408,7 +1408,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Summer Vacation 2024')">Settings</button>
             </td>
             <td>
-              <button class="btn btn-primary btn-sm">Open</button>
+              <button class="btn btn-primary btn-sm" onclick="openAlbum('Summer Vacation 2024')">Open</button>
             </td>
             <td>
               <button class="btn btn-secondary btn-sm">View</button>
@@ -1426,7 +1426,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Family Photos')">Settings</button>
             </td>
             <td>
-              <button class="btn btn-primary btn-sm">Open</button>
+              <button class="btn btn-primary btn-sm" onclick="openAlbum('Family Photos')">Open</button>
             </td>
             <td>
               <button class="btn btn-secondary btn-sm">View</button>
@@ -1444,7 +1444,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm" onclick="openAlbumSettings('Work Portfolio')">Settings</button>
             </td>
             <td>
-              <button class="btn btn-primary btn-sm">Open</button>
+              <button class="btn btn-primary btn-sm" onclick="openAlbum('Work Portfolio')">Open</button>
             </td>
             <td>
               <button class="btn btn-secondary btn-sm">View</button>
@@ -1565,4 +1565,10 @@ function initializeAlbumSettings() {
       });
     }
   });
+}
+
+// Open album page
+function openAlbum(albumTitle) {
+  // Navigate to album page with album name as parameter
+  window.location.href = `album.html?album=${encodeURIComponent(albumTitle)}`;
 } 

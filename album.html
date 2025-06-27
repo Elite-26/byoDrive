@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album - ByoDrive</title>
+    <meta name="description" content="ByoDrive Album - Premium Car Rental Service" />
+    <meta name="author" content="ByoDrive" />
+
+    <meta property="og:title" content="Album - ByoDrive" />
+    <meta property="og:description" content="ByoDrive Album - Premium Car Rental Service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+  <div class="page-wrapper">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <img src="assets/byocloud_FINAL-01.png" alt="ByoDrive Logo" class="navbar-logo-img" onclick="window.location.href='dashboard.html'" style="cursor: pointer;">
+        </div>
+        
+        <!-- Center Welcome Message -->
+        <div class="navbar-center">
+          <h2 class="navbar-welcome">Welcome, <span id="user-name">John Doe</span>!</h2>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="navbar-nav">
+          <div class="navbar-nav-desktop">
+            <!-- Navigation buttons removed as requested -->
+          </div>
+        </div>
+        
+        <!-- Right side buttons -->
+        <div class="navbar-right">
+          <!-- Logout Button -->
+          <div class="navbar-auth">
+            <button onclick="handleLogout()" class="btn btn-login">
+              <svg class="logout-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+              <span>Logout</span>
+            </button>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMenu()" class="mobile-menu-toggle">
+            <svg id="menu-icon" class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+            <svg id="close-icon" class="menu-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <h2 class="navbar-welcome">Welcome, <span id="user-name-mobile">John Doe</span>!</h2>
+        <!-- Mobile menu items removed as requested -->
+      </div>
+    </nav>
+
+    <!-- Album Section -->
+    <section class="section section-dark album-section">
+      <div class="container">
+        <!-- Album Header -->
+        <div class="album-header">
+          <h1 class="album-title" id="album-title">Album <span id="album-name">Summer Vacation 2024</span></h1>
+          <button class="btn btn-primary add-to-album-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 8px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            Add to Album
+          </button>
+        </div>
+        
+        <!-- Embed Section -->
+        <div class="embed-section">
+          <label for="embed-code" class="embed-label">Embed</label>
+          <div class="embed-input-container">
+            <input type="text" id="embed-code" class="embed-input" placeholder="Please upgrade your plan to activate this feature" readonly>
+            <button class="btn btn-secondary copy-code-btn" onclick="copyEmbedCode()">Copy Code</button>
+          </div>
+        </div>
+        
+        <!-- Divider -->
+        <div class="album-divider"></div>
+        
+        <!-- Images Section -->
+        <div class="images-section">
+          <h2 class="images-title">Images</h2>
+          <div class="images-grid" id="images-grid">
+            <!-- Images will be loaded here -->
+            <div class="image-placeholder">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 48px; height: 48px; color: #6b7280;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <p>No images in this album yet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <h3 class="footer-logo">
+          ByoDrive
+        </h3>
+        <p class="footer-description">
+          Premium car rental service delivering luxury, comfort, and reliability
+        </p>
+        <div class="footer-divider">
+          <p class="footer-copyright">
+            © 2025 ByoDrive. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="javascript.js"></script>
+  <script>
+    // Load user information when album page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = sessionStorage.getItem('currentUser');
+      if (currentUser) {
+        setUserName(currentUser);
+      }
+      
+      // Get album name from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const albumName = urlParams.get('album');
+      if (albumName) {
+        document.getElementById('album-name').textContent = decodeURIComponent(albumName);
+        document.title = `Album ${decodeURIComponent(albumName)} - ByoDrive`;
+      }
+    });
+    
+    // Copy embed code function
+    function copyEmbedCode() {
+      const embedInput = document.getElementById('embed-code');
+      embedInput.select();
+      embedInput.setSelectionRange(0, 99999); // For mobile devices
+      
+      try {
+        document.execCommand('copy');
+        showToast('Embed code copied to clipboard!');
+      } catch (err) {
+        showToast('Failed to copy embed code');
+      }
+    }
+  </script>
+  </body>
+
+</html> 
