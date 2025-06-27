@@ -2611,4 +2611,142 @@ input:focus, textarea:focus {
   .member-remove-btn {
     align-self: flex-end;
   }
+}
+
+/* Album Page Styles */
+.album-section {
+  padding-top: 8rem;
+  min-height: 100vh;
+}
+
+.album-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #374151;
+}
+
+.album-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.add-to-album-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.embed-section {
+  margin-bottom: 2rem;
+}
+
+.embed-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.embed-input-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.embed-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  cursor: not-allowed;
+}
+
+.embed-input:focus {
+  outline: none;
+  border-color: #6b7280;
+}
+
+.copy-code-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.album-divider {
+  height: 1px;
+  background-color: #374151;
+  margin: 2rem 0;
+}
+
+.images-section {
+  margin-top: 2rem;
+}
+
+.images-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background-color: #1f2937;
+  border: 2px dashed #374151;
+  border-radius: 0.75rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.image-placeholder p {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .album-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .album-title {
+    font-size: 1.5rem;
+  }
+  
+  .embed-input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .copy-code-btn {
+    width: 100%;
+  }
+  
+  .images-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 } 
