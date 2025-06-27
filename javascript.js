@@ -1414,7 +1414,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm">View</button>
             </td>
             <td>
-              <button class="btn btn-secondary btn-sm">Re-instate</button>
+              <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Summer Vacation 2024')">Re-instate</button>
             </td>
             <td>
               <button class="btn btn-danger btn-sm">Delete</button>
@@ -1432,7 +1432,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm">View</button>
             </td>
             <td>
-              <button class="btn btn-secondary btn-sm">Re-instate</button>
+              <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Family Photos')">Re-instate</button>
             </td>
             <td>
               <button class="btn btn-danger btn-sm">Delete</button>
@@ -1450,7 +1450,7 @@ function closeAlbumSettings() {
               <button class="btn btn-secondary btn-sm">View</button>
             </td>
             <td>
-              <button class="btn btn-secondary btn-sm">Re-instate</button>
+              <button class="btn btn-secondary btn-sm" onclick="openReinstateSection('Work Portfolio')">Re-instate</button>
             </td>
             <td>
               <button class="btn btn-danger btn-sm">Delete</button>
@@ -1571,4 +1571,75 @@ function initializeAlbumSettings() {
 function openAlbum(albumTitle) {
   // Navigate to album page with album name as parameter
   window.location.href = `album.html?album=${encodeURIComponent(albumTitle)}`;
+}
+
+// Re-instate Functions
+function openReinstateSection(albumTitle) {
+  // Hide the membership card, create album button, and table
+  const membershipCard = document.querySelector('.membership-card-container');
+  const createAlbumBtn = document.querySelector('.create-album-btn');
+  const albumsTable = document.querySelector('.albums-table-container');
+  
+  if (membershipCard) membershipCard.style.display = 'none';
+  if (createAlbumBtn) createAlbumBtn.style.display = 'none';
+  if (albumsTable) albumsTable.style.display = 'none';
+  
+  // Show the re-instate section
+  showReinstateSection(albumTitle);
+}
+
+function showReinstateSection(albumTitle) {
+  const albumsContent = document.getElementById('albums-content');
+  
+  // Create re-instate section HTML
+  const reinstateHTML = `
+    <div class="reinstate-section">
+      <div class="reinstate-header">
+        <h3 class="reinstate-title">${albumTitle}</h3>
+        <button class="btn btn-primary reinstate-all-btn" onclick="reinstateAll('${albumTitle}')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 8px;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          Reinstate All
+        </button>
+      </div>
+      
+      <div class="reinstate-content">
+        <div class="reinstate-label">Re-instate</div>
+        <div class="reinstate-divider"></div>
+        <div class="reinstate-placeholder">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 48px; height: 48px; color: #6b7280;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <p>Re-instate functionality will be available here</p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Replace the content
+  albumsContent.innerHTML = reinstateHTML;
+}
+
+function closeReinstateSection() {
+  // Show the membership card, create album button, and table
+  const membershipCard = document.querySelector('.membership-card-container');
+  const createAlbumBtn = document.querySelector('.create-album-btn');
+  const albumsTable = document.querySelector('.albums-table-container');
+  
+  if (membershipCard) membershipCard.style.display = 'block';
+  if (createAlbumBtn) createAlbumBtn.style.display = 'flex';
+  if (albumsTable) albumsTable.style.display = 'block';
+  
+  // Remove the re-instate section
+  const reinstateSection = document.querySelector('.reinstate-section');
+  if (reinstateSection) reinstateSection.remove();
+}
+
+function reinstateAll(albumTitle) {
+  // Show success message
+  showToast(`All items in "${albumTitle}" have been reinstated successfully!`);
+  
+  // Close re-instate section and return to albums view
+  closeReinstateSection();
 } 
